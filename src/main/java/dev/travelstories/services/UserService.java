@@ -1,6 +1,7 @@
 package dev.travelstories.services;
 
 import dev.travelstories.entities.User;
+import dev.travelstories.exceptions.BadRequestException;
 import dev.travelstories.exceptions.RecordNotFoundException;
 import dev.travelstories.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ public class UserService {
 
    //   CREATE new user
    public void createNewUser(User user) {
+
+      if(userRepository.existsByEmail(user.getEmail())){
+         throw new BadRequestException("User already exist");
+      }
+
+      user.setUsername(user.getEmail());
+
       userRepository.save(user);
    }
 
