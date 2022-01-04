@@ -34,6 +34,13 @@ public class Travelstory {
    private String imageUrl;
 
 
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false,
+      foreignKey = @ForeignKey(name = "FK_travelstory_user_key"))
+   @JsonBackReference // to solve the infinite recursion problem
+   private User user;
+
+
    /*
     * CONSTRUCTORS
     * */
@@ -41,7 +48,7 @@ public class Travelstory {
    public Travelstory() {
    }
 
-   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl ) {
+   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl, User user ) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -51,6 +58,7 @@ public class Travelstory {
       this.country = country;
       this.isPrivate = isPrivate;
       this.imageUrl = imageUrl;
+      this.user = user;
    }
 
 
@@ -130,4 +138,11 @@ public class Travelstory {
       this.imageUrl = imageUrl;
    }
 
+   public User getUser() {
+      return user;
+   }
+
+   public void setUser(User user) {
+      this.user = user;
+   }
 }

@@ -1,6 +1,9 @@
 package dev.travelstories.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity(name = "User")
@@ -19,6 +22,11 @@ public class User {
    private String password;
 
 
+   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+   @JsonManagedReference // to solve the infinite recursion problem
+   private List<Travelstory> travelstories;
+
+
    /*
     * CONSTRUCTORS
     * */
@@ -26,13 +34,14 @@ public class User {
    public User() {
    }
 
-   public User(Long id, String firstname, String lastname, String username, String email, String password) {
+   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
       this.username = username;
       this.email = email;
       this.password = password;
+      this.travelstories = travelstories;
    }
 
 
@@ -88,6 +97,13 @@ public class User {
       this.password = password;
    }
 
+   public List<Travelstory> getTravelstories() {
+      return travelstories;
+   }
+
+   public void setTravelstories(List<Travelstory> travelstories) {
+      this.travelstories = travelstories;
+   }
 }
 
 

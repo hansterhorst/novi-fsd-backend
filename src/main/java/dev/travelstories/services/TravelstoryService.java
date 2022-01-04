@@ -40,6 +40,8 @@ public class TravelstoryService {
          new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       travelstory.setAuthor(user.getFirstname() + " " + user.getLastname());
+      travelstory.setUser(user);
+
       return travelstoryRepository.save(travelstory);
    }
 
