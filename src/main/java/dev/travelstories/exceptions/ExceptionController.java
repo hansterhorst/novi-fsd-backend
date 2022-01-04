@@ -14,7 +14,7 @@ import java.util.Date;
 public class ExceptionController extends ResponseEntityExceptionHandler {
 
    @ExceptionHandler(value = {RecordNotFoundException.class})
-   public ResponseEntity<ExceptionDetails> handleResourceNotFoundException(RecordNotFoundException exception, WebRequest webRequest) {
+   public ResponseEntity<ExceptionDetails> handleRecordNotFoundException(RecordNotFoundException exception, WebRequest webRequest) {
 
       ExceptionDetails exceptionDetails = new ExceptionDetails(
          new Date(), exception.getMessage(), webRequest.getDescription(false), HttpStatus.NOT_FOUND.value());
@@ -22,4 +22,12 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
       return new ResponseEntity<>(exceptionDetails, HttpStatus.NOT_FOUND);
    }
 
+   @ExceptionHandler(value = {BadRequestException.class})
+   public ResponseEntity<ExceptionDetails> handleUserAlreadyExistsException(BadRequestException exception, WebRequest webRequest) {
+
+      ExceptionDetails exceptionDetails = new ExceptionDetails(
+         new Date(), exception.getMessage(), webRequest.getDescription(false), HttpStatus.BAD_REQUEST.value());
+
+      return new ResponseEntity<>(exceptionDetails, HttpStatus.BAD_REQUEST);
+   }
 }
