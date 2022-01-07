@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/api/v1/users")
+@CrossOrigin(value = "http://localhost:3000")
 public class UserController {
 
 

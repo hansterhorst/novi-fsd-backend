@@ -15,11 +15,12 @@ public class TravelstoryDTO {
    private String country;
    private Boolean isPrivate;
    private String imageUrl;
+   private Long userId;
 
    public TravelstoryDTO() {
    }
 
-   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl) {
+   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl, Long userId) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -29,6 +30,7 @@ public class TravelstoryDTO {
       this.country = country;
       this.isPrivate = isPrivate;
       this.imageUrl = imageUrl;
+      this.userId = userId;
    }
 
    public static TravelstoryDTO entityToDTO(Travelstory travelstory) {
@@ -43,6 +45,7 @@ public class TravelstoryDTO {
       travelstoryDTO.setCountry(travelstory.getCountry());
       travelstoryDTO.setIsPrivate(travelstory.getIsPrivate());
       travelstoryDTO.setImageUrl(travelstory.getImageUrl());
+      travelstoryDTO.setUserId(travelstory.getUser().getId());
 
       return travelstoryDTO;
    }
@@ -135,5 +138,13 @@ public class TravelstoryDTO {
 
    public void setImageUrl(String imageUrl) {
       this.imageUrl = imageUrl;
+   }
+
+   public Long getUserId() {
+      return userId;
+   }
+
+   public void setUserId(Long userId) {
+      this.userId = userId;
    }
 }
