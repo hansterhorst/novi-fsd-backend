@@ -64,6 +64,16 @@ public class TravelstoryController {
    }
 
 
+//   GET all public travelstories
+   @GetMapping(path = "/public")
+   public ResponseEntity<List<TravelstoryDTO>> getAllPublicTravelstories(){
+      List<Travelstory> travelstoryList = travelstoryService.getAllPublicTravelstories();
+      List<TravelstoryDTO> travelstoryDTOList = travelstoryList.stream().map(TravelstoryDTO::entityToDTO).toList();
+
+      return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
+   }
+
+
    //   UPDATE travelstory by id
    @PutMapping(path = "/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> updateTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId,
