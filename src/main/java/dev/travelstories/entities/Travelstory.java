@@ -29,7 +29,7 @@ public class Travelstory {
 
    private String country;
 
-   private Boolean isPrivate;
+   private Boolean isPublic;
 
    private String imageUrl;
 
@@ -48,7 +48,7 @@ public class Travelstory {
    public Travelstory() {
    }
 
-   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl, User user ) {
+   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user ) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -56,7 +56,7 @@ public class Travelstory {
       this.tripDate = tripDate;
       this.tripType = tripType;
       this.country = country;
-      this.isPrivate = isPrivate;
+      this.isPublic = isPublic;
       this.imageUrl = imageUrl;
       this.user = user;
    }
@@ -122,12 +122,12 @@ public class Travelstory {
       this.country = country;
    }
 
-   public Boolean getIsPrivate() {
-      return isPrivate;
+   public Boolean getIsPublic() {
+      return isPublic;
    }
 
-   public void setIsPrivate(Boolean isPrivate) {
-      this.isPrivate = isPrivate;
+   public void setIsPublic(Boolean isPublic) {
+      this.isPublic = isPublic;
    }
 
    public String getImageUrl() {

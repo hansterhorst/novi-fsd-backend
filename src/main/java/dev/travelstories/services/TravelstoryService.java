@@ -60,6 +60,12 @@ public class TravelstoryService {
    }
 
 
+//   GET all public travelstories
+   public List<Travelstory> getAllPublicTravelstories(){
+      return travelstoryRepository.findAllPublicTravelstories();
+   }
+
+
    //   UPDATE travelstory by id
    public Travelstory updateTravelstoryById(Long travelstoryId, Travelstory travelstory) {
 
@@ -73,7 +79,7 @@ public class TravelstoryService {
       story.setCountry(travelstory.getCountry());
       story.setTripDate(travelstory.getTripDate());
       story.setTripType(travelstory.getTripType());
-      story.setIsPrivate(travelstory.getIsPrivate());
+      story.setIsPublic(travelstory.getIsPublic());
 
       return travelstoryRepository.save(story);
    }

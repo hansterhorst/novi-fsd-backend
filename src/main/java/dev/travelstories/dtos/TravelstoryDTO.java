@@ -13,14 +13,14 @@ public class TravelstoryDTO {
    private Date tripDate;
    private String tripType;
    private String country;
-   private Boolean isPrivate;
+   private Boolean isPublic;
    private String imageUrl;
    private Long userId;
 
    public TravelstoryDTO() {
    }
 
-   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPrivate, String imageUrl, Long userId) {
+   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, Long userId) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -28,7 +28,7 @@ public class TravelstoryDTO {
       this.tripDate = tripDate;
       this.tripType = tripType;
       this.country = country;
-      this.isPrivate = isPrivate;
+      this.isPublic = isPublic;
       this.imageUrl = imageUrl;
       this.userId = userId;
    }
@@ -43,7 +43,7 @@ public class TravelstoryDTO {
       travelstoryDTO.setTripDate(travelstory.getTripDate());
       travelstoryDTO.setTripType(travelstory.getTripType());
       travelstoryDTO.setCountry(travelstory.getCountry());
-      travelstoryDTO.setIsPrivate(travelstory.getIsPrivate());
+      travelstoryDTO.setIsPublic(travelstory.getIsPublic());
       travelstoryDTO.setImageUrl(travelstory.getImageUrl());
       travelstoryDTO.setUserId(travelstory.getUser().getId());
 
@@ -61,7 +61,7 @@ public class TravelstoryDTO {
       travelstory.setTripDate(travelstoryDTO.getTripDate());
       travelstory.setTripType(travelstoryDTO.getTripType());
       travelstory.setCountry(travelstoryDTO.getCountry());
-      travelstory.setIsPrivate(travelstoryDTO.getIsPrivate());
+      travelstory.setIsPublic(travelstoryDTO.getIsPublic());
       travelstory.setImageUrl(travelstoryDTO.getImageUrl());
 
       return travelstory;
@@ -124,12 +124,12 @@ public class TravelstoryDTO {
       this.country = country;
    }
 
-   public Boolean getIsPrivate() {
-      return isPrivate;
+   public Boolean getIsPublic() {
+      return isPublic;
    }
 
-   public void setIsPrivate(Boolean isPrivate) {
-      this.isPrivate = isPrivate;
+   public void setIsPublic(Boolean isPublic) {
+      this.isPublic = isPublic;
    }
 
    public String getImageUrl() {

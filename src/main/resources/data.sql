@@ -10,7 +10,7 @@ values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 123);
 
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (11,
         'Rondje midden Nederland',
         'Nederland',
@@ -25,7 +25,7 @@ Het was vandaag een verrassende mooie dag. Normaal hou ik helemaal niet van asfa
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (12,
         'MTBroutes Overijssel, dag 1',
         'Nederland',
@@ -41,7 +41,7 @@ Na 17.30 uur kom ik bij de camping Sallandhoeve aan voor de eerste overnachting.
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 12);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (13,
         'MTBroutes Overijssel, dag 2',
         'Nederland',
@@ -57,7 +57,7 @@ Nu vlug even de route van Holten afwerken wat toch niet zo makkelijk gaat. De be
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 11);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (14,
         'MTBroutes Overijssel, dag 3',
         'Nederland',
@@ -72,7 +72,7 @@ Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een campin
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 11);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (15,
         'Rondje midden Nederland',
         'Nederland',
@@ -86,7 +86,7 @@ Het was vandaag een verrassende mooie dag. Normaal hou ik helemaal niet van asfa
         'Roadtrip',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 12);
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (16,
         'MTBroutes Overijssel, dag 1',
         'Nederland',
@@ -102,7 +102,7 @@ Na 17.30 uur kom ik bij de camping Sallandhoeve aan voor de eerste overnachting.
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (17,
         'MTBroutes Overijssel, dag 2',
         'Nederland',
@@ -118,7 +118,7 @@ Nu vlug even de route van Holten afwerken wat toch niet zo makkelijk gaat. De be
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (18,
         'MTBroutes Overijssel, dag 3',
         'Nederland',
@@ -133,7 +133,7 @@ Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een campin
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 12);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (19,
         'MTBroutes Overijssel, dag 3',
         'Nederland',
@@ -148,7 +148,7 @@ Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een campin
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 11);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
-                           trip_date, is_private, user_id)
+                           trip_date, is_public, user_id)
 values (20,
         'MTBroutes Overijssel, dag 1',
         'Nederland',
