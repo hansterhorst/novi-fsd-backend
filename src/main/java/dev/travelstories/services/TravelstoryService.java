@@ -1,5 +1,6 @@
 package dev.travelstories.services;
 
+import dev.travelstories.dtos.TravelstoryDTO;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 import dev.travelstories.exceptions.RecordNotFoundException;
@@ -53,10 +54,18 @@ public class TravelstoryService {
 
 
    //   GET travelstory by id
-   public Travelstory getTravelstoryById(Long travelStoryId) {
+   public TravelstoryDTO getTravelstoryById(Long travelStoryId) {
 
-      return travelstoryRepository.findById(travelStoryId).orElseThrow(() ->
+      Travelstory travelstory = travelstoryRepository.findById(travelStoryId).orElseThrow(() ->
          new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelStoryId)));
+
+      User user = userRepository.findById(travelstory.getUser().getId()).orElseThrow(() ->
+         new RecordNotFoundException(String.format("User with id: %s not found.", travelstory.getUser().getId())));
+
+      TravelstoryDTO travelstoryDTO = TravelstoryDTO.entityToDTO(travelstory);
+      travelstoryDTO.setAuthorImage(user.getProfileImage());
+
+      return travelstoryDTO;
    }
 
 

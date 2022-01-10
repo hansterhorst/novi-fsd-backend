@@ -58,9 +58,7 @@ public class TravelstoryController {
    @GetMapping(path = "/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> getTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
-      Travelstory travelstory = travelstoryService.getTravelstoryById(travelstoryId);
-
-      return new ResponseEntity<>(TravelstoryDTO.entityToDTO(travelstory), HttpStatus.OK);
+      return new ResponseEntity<>(travelstoryService.getTravelstoryById(travelstoryId), HttpStatus.OK);
    }
 
 

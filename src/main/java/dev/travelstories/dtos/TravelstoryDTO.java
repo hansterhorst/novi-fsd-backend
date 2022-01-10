@@ -1,6 +1,7 @@
 package dev.travelstories.dtos;
 
 import dev.travelstories.entities.Travelstory;
+import dev.travelstories.entities.User;
 
 import java.util.Date;
 
@@ -16,11 +17,12 @@ public class TravelstoryDTO {
    private Boolean isPublic;
    private String imageUrl;
    private Long userId;
+   private String authorImage;
 
    public TravelstoryDTO() {
    }
 
-   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, Long userId) {
+   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, Long userId, String authorImage) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -31,10 +33,12 @@ public class TravelstoryDTO {
       this.isPublic = isPublic;
       this.imageUrl = imageUrl;
       this.userId = userId;
+      this.authorImage = authorImage;
    }
 
    public static TravelstoryDTO entityToDTO(Travelstory travelstory) {
 
+      User user = new User();
       TravelstoryDTO travelstoryDTO = new TravelstoryDTO();
       travelstoryDTO.setId(travelstory.getId());
       travelstoryDTO.setTitle(travelstory.getTitle());
@@ -46,6 +50,7 @@ public class TravelstoryDTO {
       travelstoryDTO.setIsPublic(travelstory.getIsPublic());
       travelstoryDTO.setImageUrl(travelstory.getImageUrl());
       travelstoryDTO.setUserId(travelstory.getUser().getId());
+      travelstoryDTO.setAuthorImage(user.getProfileImage());
 
       return travelstoryDTO;
    }
@@ -146,5 +151,13 @@ public class TravelstoryDTO {
 
    public void setUserId(Long userId) {
       this.userId = userId;
+   }
+
+   public String getAuthorImage() {
+      return authorImage;
+   }
+
+   public void setAuthorImage(String authorImage) {
+      this.authorImage = authorImage;
    }
 }
