@@ -14,6 +14,7 @@ public class UserDTO {
    private String email;
    private String username;
    private String password;
+   private String profileImage;
    private List<Travelstory> travelstories;
 
 
@@ -25,13 +26,14 @@ public class UserDTO {
    public UserDTO() {
    }
 
-   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, List<Travelstory> travelstories) {
+   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
       this.email = email;
       this.username = username;
       this.password = password;
+      this.profileImage = profileImage;
       this.travelstories = travelstories;
    }
 
@@ -49,6 +51,7 @@ public class UserDTO {
       userDTO.setEmail(user.getEmail());
       userDTO.setUsername(user.getUsername());
       userDTO.setPassword(user.getPassword());
+      userDTO.setProfileImage(user.getProfileImage());
       userDTO.setTravelstories(user.getTravelstories());
 
       return userDTO;
@@ -64,6 +67,7 @@ public class UserDTO {
       user.setEmail(userDTO.getEmail());
       user.setUsername(userDTO.getUsername());
       user.setPassword(userDTO.getPassword());
+      user.setProfileImage(userDTO.getProfileImage());
       user.setTravelstories(userDTO.getTravelstories());
 
       return user;
@@ -128,6 +132,14 @@ public class UserDTO {
 
    public void setTravelstories(List<Travelstory> travelstories) {
       this.travelstories = travelstories;
+   }
+
+   public String getProfileImage() {
+      return profileImage;
+   }
+
+   public void setProfileImage(String profileImage) {
+      this.profileImage = profileImage;
    }
 }
 

@@ -20,6 +20,7 @@ public class User {
    private String username;
    private String email;
    private String password;
+   private String profileImage;
 
 
    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -34,7 +35,7 @@ public class User {
    public User() {
    }
 
-   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories) {
+   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
@@ -42,6 +43,7 @@ public class User {
       this.email = email;
       this.password = password;
       this.travelstories = travelstories;
+      this.profileImage = profileImage;
    }
 
 
@@ -103,6 +105,14 @@ public class User {
 
    public void setTravelstories(List<Travelstory> travelstories) {
       this.travelstories = travelstories;
+   }
+
+   public String getProfileImage() {
+      return profileImage;
+   }
+
+   public void setProfileImage(String profileImage) {
+      this.profileImage = profileImage;
    }
 }
 

@@ -28,11 +28,12 @@ public class UserService {
    //   CREATE new user
    public void createNewUser(User user) {
 
-      if(userRepository.existsByEmail(user.getEmail())){
+      if (userRepository.existsByEmail(user.getEmail())) {
          throw new BadRequestException("User already exist");
       }
 
       user.setUsername(user.getEmail());
+      user.setProfileImage("https://robohash.org/" + user.getFirstname());
 
       userRepository.save(user);
    }
