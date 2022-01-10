@@ -1,11 +1,11 @@
-insert into users (user_id, firstname, lastname, username, email, password)
-values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 123);
+insert into users (user_id, firstname, lastname, username, email, password, profile_image)
+values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 123, 'https://i.pravatar.cc/150?img=60');
 
-insert into users (user_id, firstname, lastname, username, email, password)
-values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 123);
+insert into users (user_id, firstname, lastname, username, email, password, profile_image)
+values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 123, 'https://i.pravatar.cc/150?img=11');
 
-insert into users (user_id, firstname, lastname, username, email, password)
-values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 123);
+insert into users (user_id, firstname, lastname, username, email, password, profile_image)
+values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 123, 'https://i.pravatar.cc/150?img=38');
 
 
 
