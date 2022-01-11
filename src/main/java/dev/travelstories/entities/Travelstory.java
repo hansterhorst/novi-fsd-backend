@@ -1,9 +1,11 @@
 package dev.travelstories.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "Travelstory")
 @Table(name = "travelstories")
@@ -41,6 +43,15 @@ public class Travelstory {
    private User user;
 
 
+   @OneToMany(mappedBy = "travelstory", cascade = CascadeType.ALL, orphanRemoval = true)
+   /*
+    * @JsonManagedReference, to solve the infinite recursion problem
+    * is the forward part of reference – the one that gets serialized normally.
+    * */
+   @JsonManagedReference
+   private List<Comment> comments;
+
+
    /*
     * CONSTRUCTORS
     * */
@@ -48,7 +59,7 @@ public class Travelstory {
    public Travelstory() {
    }
 
-   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user ) {
+   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user, List<Comment> comments ) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -59,6 +70,7 @@ public class Travelstory {
       this.isPublic = isPublic;
       this.imageUrl = imageUrl;
       this.user = user;
+      this.comments = comments;
    }
 
 
@@ -144,5 +156,13 @@ public class Travelstory {
 
    public void setUser(User user) {
       this.user = user;
+   }
+
+   public List<Comment> getComments() {
+      return comments;
+   }
+
+   public void setComments(List<Comment> comments) {
+      this.comments = comments;
    }
 }
