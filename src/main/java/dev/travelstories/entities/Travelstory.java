@@ -52,6 +52,11 @@ public class Travelstory {
    private List<Comment> comments;
 
 
+   @OneToMany(mappedBy = "travelstory", cascade = CascadeType.ALL, orphanRemoval = true)
+   @JsonManagedReference
+   private List<Like> likes;
+
+
    /*
     * CONSTRUCTORS
     * */
@@ -59,7 +64,7 @@ public class Travelstory {
    public Travelstory() {
    }
 
-   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user, List<Comment> comments ) {
+   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user, List<Comment> comments, List<Like> likes ) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -71,6 +76,7 @@ public class Travelstory {
       this.imageUrl = imageUrl;
       this.user = user;
       this.comments = comments;
+      this.likes = likes;
    }
 
 
@@ -164,5 +170,13 @@ public class Travelstory {
 
    public void setComments(List<Comment> comments) {
       this.comments = comments;
+   }
+
+   public List<Like> getLikes() {
+      return likes;
+   }
+
+   public void setLikes(List<Like> likes) {
+      this.likes = likes;
    }
 }

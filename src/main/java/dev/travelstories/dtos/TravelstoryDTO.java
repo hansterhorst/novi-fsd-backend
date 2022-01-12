@@ -1,9 +1,11 @@
 package dev.travelstories.dtos;
 
+import dev.travelstories.entities.Like;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
 import java.util.Date;
+import java.util.List;
 
 public class TravelstoryDTO {
 
@@ -18,11 +20,12 @@ public class TravelstoryDTO {
    private String imageUrl;
    private Long userId;
    private String authorImage;
+   private List<Like> likes;
 
    public TravelstoryDTO() {
    }
 
-   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, Long userId, String authorImage) {
+   public TravelstoryDTO(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, Long userId, String authorImage, List<Like> likes) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -34,6 +37,7 @@ public class TravelstoryDTO {
       this.imageUrl = imageUrl;
       this.userId = userId;
       this.authorImage = authorImage;
+      this.likes = likes;
    }
 
    public static TravelstoryDTO entityToDTO(Travelstory travelstory) {
@@ -51,6 +55,7 @@ public class TravelstoryDTO {
       travelstoryDTO.setImageUrl(travelstory.getImageUrl());
       travelstoryDTO.setUserId(travelstory.getUser().getId());
       travelstoryDTO.setAuthorImage(user.getProfileImage());
+      travelstoryDTO.setLikes(travelstory.getLikes());
 
       return travelstoryDTO;
    }
@@ -159,5 +164,9 @@ public class TravelstoryDTO {
 
    public void setAuthorImage(String authorImage) {
       this.authorImage = authorImage;
+   }
+
+   public void setLikes(List<Like> likes) {
+      this.likes = likes;
    }
 }
