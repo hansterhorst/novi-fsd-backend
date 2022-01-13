@@ -1,5 +1,6 @@
 package dev.travelstories.dtos;
 
+import dev.travelstories.entities.Follow;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
@@ -16,6 +17,7 @@ public class UserDTO {
    private String password;
    private String profileImage;
    private List<Travelstory> travelstories;
+   private List<Follow> follows;
 
 
 
@@ -26,7 +28,7 @@ public class UserDTO {
    public UserDTO() {
    }
 
-   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories) {
+   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories, List<Follow> follows) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
@@ -35,6 +37,7 @@ public class UserDTO {
       this.password = password;
       this.profileImage = profileImage;
       this.travelstories = travelstories;
+      this.follows = follows;
    }
 
 
@@ -53,6 +56,7 @@ public class UserDTO {
       userDTO.setPassword(user.getPassword());
       userDTO.setProfileImage(user.getProfileImage());
       userDTO.setTravelstories(user.getTravelstories());
+      userDTO.setFollows(user.getFollows());
 
       return userDTO;
    }
@@ -140,6 +144,14 @@ public class UserDTO {
 
    public void setProfileImage(String profileImage) {
       this.profileImage = profileImage;
+   }
+
+   public List<Follow> getFollows() {
+      return follows;
+   }
+
+   public void setFollows(List<Follow> follows) {
+      this.follows = follows;
    }
 }
 

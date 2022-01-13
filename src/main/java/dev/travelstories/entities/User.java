@@ -28,6 +28,13 @@ public class User {
    private List<Travelstory> travelstories;
 
 
+   //   You're following other users
+   @OneToMany(mappedBy = "followUser", cascade = CascadeType.ALL, orphanRemoval = true)
+   @JsonManagedReference
+   private List<Follow> follows;
+
+
+
    /*
     * CONSTRUCTORS
     * */
@@ -35,7 +42,7 @@ public class User {
    public User() {
    }
 
-   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage) {
+   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage, List<Follow> follows) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
@@ -44,6 +51,7 @@ public class User {
       this.password = password;
       this.travelstories = travelstories;
       this.profileImage = profileImage;
+      this.follows = follows;
    }
 
 
@@ -113,6 +121,14 @@ public class User {
 
    public void setProfileImage(String profileImage) {
       this.profileImage = profileImage;
+   }
+
+   public List<Follow> getFollows() {
+      return follows;
+   }
+
+   public void setFollows(List<Follow> follows) {
+      this.follows = follows;
    }
 }
 
