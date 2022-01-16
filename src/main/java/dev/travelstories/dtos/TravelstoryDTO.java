@@ -54,7 +54,7 @@ public class TravelstoryDTO {
       travelstoryDTO.setIsPublic(travelstory.getIsPublic());
       travelstoryDTO.setImageUrl(travelstory.getImageUrl());
       travelstoryDTO.setUserId(travelstory.getUser().getId());
-      travelstoryDTO.setAuthorImage(user.getProfileImage());
+      travelstoryDTO.setAuthorImage(travelstory.getUser().getProfileImage());
       travelstoryDTO.setLikes(travelstory.getLikes());
 
       return travelstoryDTO;
