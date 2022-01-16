@@ -1,10 +1,9 @@
 package dev.travelstories.security;
 
 
-import dev.travelstories.exceptions.ValidationException;
+import dev.travelstories.exceptions.BadRequestException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
@@ -60,15 +59,15 @@ public class JwtTokenProvider {
          Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
          return true;
       } catch (SignatureException exception) {
-         throw new ValidationException(HttpStatus.BAD_REQUEST, "Invalid JWT signature");
+         throw new BadRequestException("Invalid JWT signature");
       } catch (MalformedJwtException exception) {
-         throw new ValidationException(HttpStatus.BAD_REQUEST, "Invalid JWT token");
+         throw new BadRequestException("Invalid JWT token");
       } catch (ExpiredJwtException exception) {
-         throw new ValidationException(HttpStatus.BAD_REQUEST, "Expired JWT token");
+         throw new BadRequestException("Expired JWT token");
       } catch (UnsupportedJwtException exception) {
-         throw new ValidationException(HttpStatus.BAD_REQUEST, "Unsupported JWT token");
+         throw new BadRequestException("Unsupported JWT token");
       } catch (IllegalArgumentException exception) {
-         throw new ValidationException(HttpStatus.BAD_REQUEST, "JWT claims string is empty.");
+         throw new BadRequestException("JWT claims string is empty.");
       }
    }
 }
