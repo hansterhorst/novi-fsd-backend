@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static dev.travelstories.constants.Constants.*;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -50,9 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
          .and()
          .authorizeRequests()
-         .antMatchers("/api/v1/users/**").hasAnyRole("ADMIN", "USER")
-         .antMatchers("/api/v1/auth/**").permitAll()
-         .antMatchers(HttpMethod.GET, "/api/v1/public/**").permitAll()
+         .antMatchers(AUTHORITY_ACCESS_URL + "/**").hasAnyRole(ROLE_USER, ROLE_ADMIN)
+         .antMatchers(HttpMethod.GET, PUBLIC_ACCESS_URL + "/**").permitAll()
+         .antMatchers(HttpMethod.POST, AUTHENTICATION_ACCESS_URL + "/**").permitAll()
          .anyRequest()
          .authenticated();
 

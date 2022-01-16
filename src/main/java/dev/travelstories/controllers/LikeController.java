@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static dev.travelstories.constants.Constants.AUTHORITY_ACCESS_URL;
+
 @RestController
-@RequestMapping(path = "/api/v1/users/travelstory")
+@RequestMapping(path = AUTHORITY_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class LikeController {
 
@@ -22,7 +24,7 @@ public class LikeController {
    }
 
 
-   @PostMapping(path = "/{travelstoryId}/likes/user/{userId}")
+   @PostMapping(path = "/travelstories/{travelstoryId}/likes/user/{userId}")
    public ResponseEntity<String> createLike(@PathVariable(value = "travelstoryId") Long travelstoryId, @PathVariable(value = "userId") Long userId) {
 
       likeService.createLike(travelstoryId, userId);
@@ -30,7 +32,7 @@ public class LikeController {
       return new ResponseEntity<>("Like successfully added", HttpStatus.CREATED);
    }
 
-   @GetMapping(path = "/{travelstoryId}/likes")
+   @GetMapping(path = "/travelstories/{travelstoryId}/likes")
    public ResponseEntity<List<Like>> getAllTravelstoryLikes(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
       List<Like> likes = likeService.getAllTravelstoryLikes(travelstoryId);
@@ -39,7 +41,7 @@ public class LikeController {
    }
 
 
-   @DeleteMapping(path = "/{travelstoryId}/likes/user/{userId}")
+   @DeleteMapping(path = "/travelstories/{travelstoryId}/likes/user/{userId}")
    public ResponseEntity<String> deleteLikeByUserId(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                     @PathVariable(value = "userId") Long userId) {
 

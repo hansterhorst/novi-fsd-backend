@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static dev.travelstories.constants.Constants.AUTHORITY_ACCESS_URL;
+
 @RestController
-@RequestMapping(path = "/api/v1/users")
+@RequestMapping(path = AUTHORITY_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class FollowController {
 

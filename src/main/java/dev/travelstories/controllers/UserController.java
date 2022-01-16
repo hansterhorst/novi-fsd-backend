@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static dev.travelstories.constants.Constants.AUTHORITY_ACCESS_URL;
+
 @RestController
-@RequestMapping(path = "/api/v1/users")
+@RequestMapping(path = AUTHORITY_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class UserController {
 
@@ -62,7 +64,7 @@ public class UserController {
 
    //   GET user by email
    @GetMapping(path = "/user")
-   public ResponseEntity<UserDTO> getUserById(@RequestParam(name = "email") String email) {
+   public ResponseEntity<UserDTO> getUserByEmail(@RequestParam(name = "email") String email) {
 
       User user = userService.getUserByEmail(email);
 

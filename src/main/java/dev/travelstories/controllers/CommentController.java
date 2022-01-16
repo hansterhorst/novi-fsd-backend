@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static dev.travelstories.constants.Constants.*;
+
 
 @RestController
-@RequestMapping(path = "/api/v1/travelstories")
+@RequestMapping(path = AUTHORITY_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class CommentController {
 
@@ -35,7 +37,7 @@ public class CommentController {
     * */
 
    //   CREATE a new comment on a travelstory by travelstoryId
-   @PostMapping(path = "/{travelstoryId}/comments/user/{userId}")
+   @PostMapping(path = "/travelstories/{travelstoryId}/comments/user/{userId}")
    public ResponseEntity<String> createComment(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                @PathVariable(value = "userId") Long userId,
                                                @RequestBody CommentDTO commentDTO) {
@@ -48,7 +50,7 @@ public class CommentController {
 
 
    //   GET all comments from travelstory by travelstoryId
-   @GetMapping(path = "/{travelstoryId}/comments")
+   @GetMapping(path = "/travelstories/{travelstoryId}/comments")
    public ResponseEntity<List<CommentDTO>> getCommentsFromTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
       List<CommentDTO> commentDTOList = commentService.getCommentsFromTravelstoryById(travelstoryId);
@@ -58,7 +60,7 @@ public class CommentController {
 
 
    //   GET a comment from a travelstory by commentId and travelstoryId
-   @GetMapping(path = "/{travelstoryId}/comments/{commentId}")
+   @GetMapping(path = "/travelstories/{travelstoryId}/comments/{commentId}")
    public ResponseEntity<CommentDTO> getCommentFromTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                                    @PathVariable(value = "commentId") Long commentId) {
 
@@ -69,7 +71,7 @@ public class CommentController {
 
 
    //   UPDATE a comment by commentId on a travelstory by travelstoryId
-   @PutMapping(path = "/{travelstoryId}/comments/{commentId}")
+   @PutMapping(path = "/travelstories/{travelstoryId}/comments/{commentId}")
    public ResponseEntity<CommentDTO> updateCommitById(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                       @PathVariable(value = "commentId") Long commentId,
                                                       @RequestBody CommentDTO commentDTO) {
@@ -83,7 +85,7 @@ public class CommentController {
 
 
    //   DELETE a comment by commentId on a travelstory by travelstoryId
-   @DeleteMapping(path = "/{travelstoryId}/comments/{commentId}")
+   @DeleteMapping(path = "/travelstories/{travelstoryId}/comments/{commentId}")
    public ResponseEntity<String> deleteCommitById(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                   @PathVariable(value = "commentId") Long commentId) {
 

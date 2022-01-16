@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dev.travelstories.constants.Constants.AUTHENTICATION_ACCESS_URL;
+
 @RestController
-@RequestMapping(path = "/api/v1/auth")
+@RequestMapping(path = AUTHENTICATION_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class AuthController {
 
