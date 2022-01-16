@@ -1,11 +1,20 @@
 insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 123, 'https://i.pravatar.cc/150?img=60');
+values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=60');
 
 insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 123, 'https://i.pravatar.cc/150?img=11');
+values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=11');
 
 insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 123, 'https://i.pravatar.cc/150?img=38');
+values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=38');
+
+
+insert into roles (role_id, role_name) values (10, 'ROLE_ADMIN');
+insert into roles (role_id, role_name) values (11, 'ROLE_USER');
+
+insert into user_roles (user_id, role_id) values (11, 10);
+insert into user_roles (user_id, role_id) values (11, 11);
+insert into user_roles (user_id, role_id) values (12, 11);
+insert into user_roles (user_id, role_id) values (13, 11);
 
 
 
