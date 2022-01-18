@@ -1,6 +1,7 @@
 package dev.travelstories.entities;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity(name = "Role")
 @Table(name = "roles")
@@ -16,6 +17,18 @@ public class Role {
    private String name;
 
 
+   /*
+    * Many to Many relations
+    */
+
+   @ManyToMany(mappedBy = "roles", cascade = CascadeType.REMOVE)
+   private List<User> users = new ArrayList<>();
+
+
+   /*
+    * CONSTRUCTORS
+    */
+
    public Role() {
    }
 
@@ -24,6 +37,10 @@ public class Role {
       this.name = name;
    }
 
+
+   /*
+    * GETTERS & SETTERS
+    * */
 
    public Long getId() {
       return id;
@@ -41,4 +58,11 @@ public class Role {
       this.name = name;
    }
 
+   public List<User> getUsers() {
+      return users;
+   }
+
+   public void setUsers(List<User> users) {
+      this.users = users;
+   }
 }

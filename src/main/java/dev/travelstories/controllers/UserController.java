@@ -53,7 +53,7 @@ public class UserController {
 
 
    //   GET user by id
-   @GetMapping(path = "/{userId}")
+   @GetMapping(path = "/user/{userId}")
    public ResponseEntity<UserDTO> getUserById(@PathVariable(value = "userId") Long userId) {
 
       User user = userService.getUserById(userId);
@@ -73,7 +73,7 @@ public class UserController {
 
 
    //   UPDATE user by id
-   @PutMapping(path = "/{userId}")
+   @PutMapping(path = "/user/{userId}")
    public ResponseEntity<String> updateUserById(@PathVariable(value = "userId") Long userId,
                                                 @RequestBody UserDTO userDTO) {
 
@@ -85,7 +85,7 @@ public class UserController {
 
 
    //   DELETE user by id
-   @DeleteMapping(path = "{userId}")
+   @DeleteMapping(path = "/user/{userId}")
    public ResponseEntity<String> deleteUserById(@PathVariable(value = "userId") Long userId) {
 
       userService.deleteUserById(userId);

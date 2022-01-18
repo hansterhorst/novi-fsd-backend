@@ -83,6 +83,8 @@ public class UserService {
       User deleteUser = userRepository.findById(userId).orElseThrow(() ->
          new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
+      deleteUser.getRoles().removeAll(deleteUser.getRoles());
+
       userRepository.delete(deleteUser);
    }
 

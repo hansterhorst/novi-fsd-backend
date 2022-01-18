@@ -3,7 +3,7 @@ package dev.travelstories.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.*;
 
 
 @Entity(name = "User")
@@ -38,12 +38,12 @@ public class User {
    private List<Follow> follows;
 
 
-   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
    @JoinTable(name = "user_roles",
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
    )
-   private List<Role> roles;
+   private List<Role> roles = new ArrayList<>();
 
 
    /*
