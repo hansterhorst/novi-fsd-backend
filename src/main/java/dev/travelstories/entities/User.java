@@ -21,6 +21,10 @@ public class User {
    private String email;
    private String password;
    private String profileImage;
+   private String city;
+   private String country;
+   @Column(columnDefinition = "TEXT")
+   private String bio;
 
 
    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -49,7 +53,7 @@ public class User {
    public User() {
    }
 
-   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage, List<Follow> follows) {
+   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage, List<Follow> follows, String city, String country, String bio) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
@@ -59,6 +63,9 @@ public class User {
       this.travelstories = travelstories;
       this.profileImage = profileImage;
       this.follows = follows;
+      this.city = city;
+      this.country = country;
+      this.bio = bio;
    }
 
 
@@ -136,6 +143,30 @@ public class User {
 
    public void setFollows(List<Follow> follows) {
       this.follows = follows;
+   }
+
+   public String getCity() {
+      return city;
+   }
+
+   public void setCity(String city) {
+      this.city = city;
+   }
+
+   public String getCountry() {
+      return country;
+   }
+
+   public void setCountry(String country) {
+      this.country = country;
+   }
+
+   public String getBio() {
+      return bio;
+   }
+
+   public void setBio(String bio) {
+      this.bio = bio;
    }
 
    public List<Role> getRoles() {

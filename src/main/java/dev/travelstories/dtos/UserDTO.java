@@ -16,6 +16,9 @@ public class UserDTO {
    private String username;
    private String password;
    private String profileImage;
+   private String city;
+   private String country;
+   private String bio;
    private List<Travelstory> travelstories;
    private List<Follow> follows;
 
@@ -28,7 +31,7 @@ public class UserDTO {
    public UserDTO() {
    }
 
-   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories, List<Follow> follows) {
+   public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories, List<Follow> follows, String city, String country, String bio) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
@@ -38,6 +41,9 @@ public class UserDTO {
       this.profileImage = profileImage;
       this.travelstories = travelstories;
       this.follows = follows;
+      this.city = city;
+      this.country = country;
+      this.bio = bio;
    }
 
 
@@ -53,10 +59,13 @@ public class UserDTO {
       userDTO.setLastname(user.getLastname());
       userDTO.setEmail(user.getEmail());
       userDTO.setUsername(user.getUsername());
-      userDTO.setPassword(user.getPassword());
+//      userDTO.setPassword(user.getPassword());
       userDTO.setProfileImage(user.getProfileImage());
       userDTO.setTravelstories(user.getTravelstories());
       userDTO.setFollows(user.getFollows());
+      userDTO.setCity(user.getCity());
+      userDTO.setCountry(user.getCountry());
+      userDTO.setBio(user.getBio());
 
       return userDTO;
    }
@@ -73,6 +82,9 @@ public class UserDTO {
       user.setPassword(userDTO.getPassword());
       user.setProfileImage(userDTO.getProfileImage());
       user.setTravelstories(userDTO.getTravelstories());
+      user.setCity(userDTO.getCity());
+      user.setCountry(userDTO.getCountry());
+      user.setBio(userDTO.getBio());
 
       return user;
    }
@@ -152,6 +164,30 @@ public class UserDTO {
 
    public void setFollows(List<Follow> follows) {
       this.follows = follows;
+   }
+
+   public String getCity() {
+      return city;
+   }
+
+   public void setCity(String city) {
+      this.city = city;
+   }
+
+   public String getCountry() {
+      return country;
+   }
+
+   public void setCountry(String country) {
+      this.country = country;
+   }
+
+   public String getBio() {
+      return bio;
+   }
+
+   public void setBio(String bio) {
+      this.bio = bio;
    }
 }
 

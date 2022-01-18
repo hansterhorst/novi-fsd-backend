@@ -1,11 +1,11 @@
-insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=60');
+insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
+values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 'Delden', 'Nederland', 'Kom uit het prachtige Twente, het plaatsje Delden dat omringd is met bossen van landgoed Twickel. Mijn hele leven al gek van fietsen, vooral op de mountainbike. Laatste jaren verken de wereld op een volgepakte fiets, dat mij na uitzonderlijke plaatsen brengt.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=60');
 
-insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=11');
+insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
+values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 'Deventer', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=11');
 
-insert into users (user_id, firstname, lastname, username, email, password, profile_image)
-values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=38');
+insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
+values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 'Leiden', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'https://i.pravatar.cc/150?img=38');
 
 
 insert into roles (role_id, role_name) values (10, 'ROLE_ADMIN');
