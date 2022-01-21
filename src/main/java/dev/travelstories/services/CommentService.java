@@ -45,10 +45,10 @@ public class CommentService {
    public void createComment(Long travelstoryId, Long userId, Comment comment) {
 
       User user = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       comment.setTravelstory(travelstory);
       comment.setCreatedAt(new Date());
@@ -62,7 +62,7 @@ public class CommentService {
    public List<CommentDTO> getCommentsFromTravelstoryById(Long travelstoryId) {
 
       List<Comment> comments = commentRepository.findCommentsByTravelstoryId(travelstoryId).orElseThrow(() ->
-         new BadRequestException("Comment does not belong to this travelstory."));
+              new BadRequestException("Comment does not belong to this travelstory."));
       List<CommentDTO> commentDTOList = new ArrayList<>();
 
       for (Comment comment : comments) {
@@ -76,7 +76,7 @@ public class CommentService {
          commentDTO.setComment(comment.getComment());
          commentDTO.setFullname(user.getFirstname() + " " + user.getLastname());
          commentDTO.setUserId(comment.getUserId());
-         commentDTO.setUserProfile(user.getProfileImage());
+         commentDTO.profileImage(user.getProfileImage());
 
          commentDTOList.add(commentDTO);
       }
@@ -90,10 +90,10 @@ public class CommentService {
    public Comment getCommentFromTravelstoryById(Long travelstoryId, Long commentId) {
 
       Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       Comment comment = commentRepository.findById(commentId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
+              new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
 
       if (!comment.getTravelstory().getId().equals(travelstory.getId())) {
          throw new BadRequestException("Comment does not belong to this travelstory.");
@@ -107,10 +107,10 @@ public class CommentService {
    public Comment updateCommitById(Long travelstoryId, Long commentId, Comment comment) {
 
       Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       Comment updateComment = commentRepository.findById(commentId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
+              new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
 
       if (!updateComment.getTravelstory().getId().equals(travelstory.getId())) {
          throw new BadRequestException("Comment does not belong to this travelstory.");
@@ -126,10 +126,10 @@ public class CommentService {
    public String deleteCommitById(Long travelstoryId, Long commentId) {
 
       Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       Comment comment = commentRepository.findById(commentId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
+              new RecordNotFoundException(String.format("Comment with id: %s not found.", commentId)));
 
       if (!comment.getTravelstory().getId().equals(travelstory.getId())) {
          throw new BadRequestException("Comment does not belong to this travelstory.");

@@ -14,4 +14,5 @@ public interface TravelstoryRepository extends JpaRepository<Travelstory, Long> 
    @Query("SELECT t FROM Travelstory t WHERE t.isPublic = true")
    List<Travelstory> findAllPublicTravelstories();
 
+   List<Travelstory> findTravelstoriesByUserId(Long userId);
 }

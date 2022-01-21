@@ -38,7 +38,7 @@ public class TravelstoryService {
    public Travelstory createTravelstory(Long userId, Travelstory travelstory) {
 
       User user = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       travelstory.setAuthor(user.getFirstname() + " " + user.getLastname());
       travelstory.setUser(user);
@@ -53,24 +53,35 @@ public class TravelstoryService {
    }
 
 
+   //   GET all travelstories by userId
+   public List<Travelstory> getAllTravelstoriesByUserId(Long userId) {
+
+      User user = userRepository.findById(userId).orElseThrow(() ->
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+
+      return travelstoryRepository.findTravelstoriesByUserId(user.getId());
+   }
+
+
    //   GET travelstory by id
    public TravelstoryDTO getTravelstoryById(Long travelStoryId) {
 
       Travelstory travelstory = travelstoryRepository.findById(travelStoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelStoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelStoryId)));
 
       User user = userRepository.findById(travelstory.getUser().getId()).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", travelstory.getUser().getId())));
+              new RecordNotFoundException(String.format("User with id: %s not found.", travelstory.getUser().getId())));
 
       TravelstoryDTO travelstoryDTO = TravelstoryDTO.entityToDTO(travelstory);
       travelstoryDTO.setAuthorImage(user.getProfileImage());
+      travelstoryDTO.setUserId(user.getId());
 
       return travelstoryDTO;
    }
 
 
-//   GET all public travelstories
-   public List<Travelstory> getAllPublicTravelstories(){
+   //   GET all public travelstories
+   public List<Travelstory> getAllPublicTravelstories() {
       return travelstoryRepository.findAllPublicTravelstories();
    }
 
@@ -79,7 +90,7 @@ public class TravelstoryService {
    public Travelstory updateTravelstoryById(Long travelstoryId, Travelstory travelstory) {
 
       Travelstory story = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       story.setTitle(travelstory.getTitle());
       story.setArticle(travelstory.getArticle());
@@ -98,7 +109,7 @@ public class TravelstoryService {
    public String deleteTravelstoryById(Long travelstoryId) {
 
       Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
+              new RecordNotFoundException(String.format("Travelstory with id: %s not found.", travelstoryId)));
 
       travelstoryRepository.delete(travelstory);
 

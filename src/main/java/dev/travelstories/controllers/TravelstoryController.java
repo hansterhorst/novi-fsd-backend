@@ -55,6 +55,17 @@ public class TravelstoryController {
    }
 
 
+   //   GET all travelstories by userId
+   @GetMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/user/{userId}")
+   public ResponseEntity<List<TravelstoryDTO>> getAllTravelstoriesByUserId(@PathVariable(value = "userId") Long userId) {
+
+      List<Travelstory> travelstoryList = travelstoryService.getAllTravelstoriesByUserId(userId);
+      List<TravelstoryDTO> travelstoryDTOList = travelstoryList.stream().map(TravelstoryDTO::entityToDTO).toList();
+
+      return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
+   }
+
+
    //   GET travelstory by id
    @GetMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> getTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
@@ -75,12 +86,15 @@ public class TravelstoryController {
       return new ResponseEntity<>(TravelstoryDTO.entityToDTO(updatedTravelstory), HttpStatus.OK);
    }
 
+
    //   DELETE travelstory by id
    @DeleteMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<String> deleteTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
       return new ResponseEntity<>(travelstoryService.deleteTravelstoryById(travelstoryId), HttpStatus.OK);
    }
+
+
 
 
    /*
@@ -95,6 +109,7 @@ public class TravelstoryController {
 
       return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
    }
+
 
    //   GET public travelstory by id
    @GetMapping(path = PUBLIC_ACCESS_URL + "/travelstories/{travelstoryId}")

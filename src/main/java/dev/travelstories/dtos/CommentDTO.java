@@ -13,7 +13,7 @@ public class CommentDTO {
    private String comment;
    private String fullname;
    private Long userId;
-   private String userProfile;
+   private String profileImage;
 
 
 
@@ -24,13 +24,14 @@ public class CommentDTO {
    public CommentDTO() {
    }
 
-   public CommentDTO(Long id, Date createdAt, String comment, String fullname, Long userId, String userProfile) {
+   public CommentDTO(Long id, Date createdAt, String comment, String fullname, Long userId, String profileImage
+   ) {
       this.id = id;
       this.createdAt = createdAt;
       this.comment = comment;
       this.fullname = fullname;
       this.userId = userId;
-      this.userProfile = userProfile;
+      this.profileImage = profileImage;
    }
 
 
@@ -50,7 +51,7 @@ public class CommentDTO {
       commentDTO.setComment(comment.getComment());
       commentDTO.setFullname(user.getFirstname() + " " + user.getLastname());
       commentDTO.setUserId(comment.getUserId());
-      commentDTO.setUserProfile(user.getProfileImage());
+      commentDTO.profileImage(user.getProfileImage());
 
       return commentDTO;
    }
@@ -114,11 +115,13 @@ public class CommentDTO {
       this.userId = userId;
    }
 
-   public String getUserProfile() {
-      return userProfile;
+   public String profileImage() {
+      return profileImage;
    }
 
-   public void setUserProfile(String userProfile) {
-      this.userProfile = userProfile;
+   public void profileImage(String profileImage
+   ) {
+      this.profileImage = profileImage
+      ;
    }
 }
