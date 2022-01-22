@@ -60,8 +60,9 @@ public class TravelstoryImageService {
          // Upload image aws s3 server
          awsImageStoreService.save(path, filename, Optional.of(metadata), file.getInputStream());
 
+
          // Update user profile image
-         travelstory.setImageUrl(filename);
+         travelstory.setImageUrl(file.getOriginalFilename());
          travelstoryRepository.save(travelstory);
 
       } catch (IOException exception) {

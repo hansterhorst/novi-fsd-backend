@@ -73,6 +73,7 @@ public class TravelstoryDTO {
       travelstory.setCountry(travelstoryDTO.getCountry());
       travelstory.setIsPublic(travelstoryDTO.getIsPublic());
       travelstory.setImageUrl(travelstoryDTO.getImageUrl());
+      travelstory.setLikes(travelstoryDTO.getLikes());
 
       return travelstory;
    }
@@ -164,6 +165,10 @@ public class TravelstoryDTO {
 
    public void setAuthorImage(String authorImage) {
       this.authorImage = authorImage;
+   }
+
+   public List<Like> getLikes() {
+      return likes;
    }
 
    public void setLikes(List<Like> likes) {
