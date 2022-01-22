@@ -1,11 +1,12 @@
 insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
-values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 'Delden', 'Nederland', 'Kom uit het prachtige Twente, het plaatsje Delden dat omringd is met bossen van landgoed Twickel. Mijn hele leven al gek van fietsen, vooral op de mountainbike. Laatste jaren verken de wereld op een volgepakte fiets, dat mij na uitzonderlijke plaatsen brengt.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'hans.jpg-b621de4b-2954-4e3a-9eb9-a5384902c2a3');
+values (11, 'Hans', 'ter Horst', 'hans@mail.com', 'hans@mail.com', 'Delden', 'Nederland', 'Kom uit het prachtige Twente, het plaatsje Delden dat omringd is met bossen van landgoed Twickel. Mijn hele leven al gek van fietsen, vooral op de mountainbike. Laatste jaren verken de wereld op een volgepakte fiets, dat mij na uitzonderlijke plaatsen brengt.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'hans.jpg');
 
 insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
-values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 'Deventer', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'klaas.jpg-0bd22ae3-860c-47a4-b526-566b9a2445cd');
+values (12, 'Klaas', 'Janssen', 'klaas@mail.com', 'klaas@mail.com', 'Deventer', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'klaas.jpg');
 
 insert into users (user_id, firstname, lastname, username, email, city, country, bio, password, profile_image)
-values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 'Leiden', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'anne.jpg-9144dee7-480d-4256-91b7-3680a8ccbf38');
+values (13, 'Anne-Marie', 'Rozendal', 'anne@mail.com', 'anne@mail.com', 'Leiden', 'Nederland', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', '$2a$10$Fg9AsOeOaV9YACDnV2ptZu5WllBhfVz.5JcJfjOH9LS9RioUNVt9a', 'anne.jpg');
+
 
 
 insert into roles (role_id, role_name) values (10, 'ROLE_ADMIN');
@@ -29,15 +30,15 @@ Vandaag rond 9 uur weggefietst vanaf kasteel Twickel. Een mooi startpunt om te b
 Ik heb geluk vandaag want het is donderdag patat dag. Ik bestel een grote punt zak eigengemaakte friet en en een klodder Mayo. Als toetje bak ik zelf nog een hamburger en een bbq worstje. Heerlijk, mijn energie level is weer op peil. ‘s Avonds kijk ik nog even naar de 60 plussen die een potje Jeu de Boules spelen.
 Het was vandaag een verrassende mooie dag. Normaal hou ik helemaal niet van asfalt fietsen maar heb vandaag toch wel genoten. Morgen het IJsselmeer over
 ',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/fff47788-41af-4dc0-9808-5fc89de04fc6_9F4FA27F-B040-4570-B872-B46474EBCFA1.jpg',
+        '1bfc1b13-5015-4079-a820-3e9bf015f195_3BD3FC70-CD70-40A4-8330-59A9AD839384.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (12,
-        'MTBroutes Overijssel, dag 1',
-        'Nederland',
+        'Auckland',
+        'Nieuw Zeeland',
         'Klaas Janssen',
         'We kunnen weer fietsen. De corona regels zijn weer wat versoepeld zodat je weer een beetje normaal naar de camping kunt gaan. Maar wel met de nodige afstand! Deze trip zat al een tijdje in mijn hoofd en het idee is ontstaan in Nieuw-Zeeland, waar ik de tour Aotearoa heb gefietst. De bedoeling van de trip is om alle mountainbike routes van Overijssel te fietsen in vijf dagen. Het weer is prima dus dat moet lukken.
 Vanmorgen om 9.00 uur begonnen bij de pomp in Delden met een bakje koffie bij de Sevenster. Na een goede dosis caffeine op de fiets richting de Esch. Om een kleine gedeelte van de route van Twickel te fietsen als opwarmer. Poeh, moet er wel even inkomen met een vol bepakte mountainbike, stuurt toch wel weer anders. 😀 Na ruim een half uurtje bij de sluis van Delden richting Markelo lang het kanaal.
@@ -45,7 +46,7 @@ Ook Markelo maar een klein stukje maar wel het mooiste gedeelte van de route. Bi
 Gelukkig in het centrum van Rijssen was er een bistro open voor kroketten met brood en een lekker biertje. Na de nodige koolhydraten was Wierden aan de beurt en deze fiets ik wel helemaal, maar de route was niet bijzonder met een paar mooie tracks bij het Lageveld, Meijerinksberg en Wittebeltsweg.
 Na Wierden het eerste gedeelte van de route van Holten. Ondertussen kan ik de benen wel voelen en het tempo gaat wat achteruit. Het mooie weer, het mooie uitzicht en het gevoel van lekker weer een paar dagen fietsen houd de moet erin. Ondertussen aangekomen bij de langste single track van Holten, shit wat gaat het stroef. Moet de concentratie er goed bijhouden, maar het is volop genieten hier. Het blijft een mooie stuk en het maakt de route ook uitdagend. Na de single track kan ik effe bijkomen om vervolgens aan de mooiste gedeelte van de route langs de Motieweg te beginnen. De route komt ten einde door een afzetting van een beschermde hagedis soort. Even op de navigatie kijken hoe nu verder en gelukkig kunnen we de route weer snel vervolgen na een kleine opleiding.
 Na 17.30 uur kom ik bij de camping Sallandhoeve aan voor de eerste overnachting. Krijg een mooi plekje bij een vijver, zet de tent op, snel even wat eten en lekker douchen. Tijd om de pan aan te steken voor een lekker hamburger en een bbq worstje en uiteraard een biertje op het terras. PROOST. 🍻',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/7791fe8d-ec44-499e-890f-aaf195e38285_62981886-CB53-4BA3-AAFB-0F4EA9430C62.jpg',
+        'f11947b9-a787-4b02-92b5-28d19dd53f7f_8C95289F-88F7-4D1E-86A7-D3DC845C1DF2.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 12);
 
@@ -61,43 +62,43 @@ Na twaalf uur kom ik bij de route aan. Even pauze voor wat voeding en hup verder
 Terug bij het begin punt van Diepenveen even snel kijken hoe nu verder naar de route van Heeten. De route is toch verrassend leuk. In ieder geval beter dan het eerste stuk van vanmorgen. Veel mooi single tracks en de meesten hebben een naam dat wordt aangegeven met een groot houten plak. Heb toch wel genoten van de route, maar kan wel merken dat het vlammetje langzaam uitgaat. Kosten toch aardig wat energie met een fiets van ruim 25KG over alle die single tracks. In Nieuw Heeten zit de route erop en in een klein cafeetje bestel ik een cappuccino met appelgebak, heerlijk!
 Nu vlug even de route van Holten afwerken wat toch niet zo makkelijk gaat. De benen zijn op! Het is tijd voor een camping voor de nacht. Maar eerst nog even een gedeelte van Hellendoorn doen. Na een klein half uurtje hou ik het voor gezien. Even op Google Maps kijken voor een camping in de buurt en verrek, er is een boeren camping vlak in de buurt. Top daar gaan we heen, camping Heldersbroek. Mooie rustig camping en het hele veld voor mij alleen met stoelen en tafel om bij te komen van toch wel een zware rit. Welterusten!
 ',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/6bb32833-6cee-40d5-9d21-6d4bad65e374_4354A30D-D93E-47FF-A6FA-E885AE97F7A1.jpg',
+        '6bb32833-6cee-40d5-9d21-6d4bad65e374_4354A30D-D93E-47FF-A6FA-E885AE97F7A1.jpeg',
         'Stedentrip',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 11);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (14,
-        'MTBroutes Overijssel, dag 3',
-        'Nederland',
+        'rondje Hermannsweg',
+        'Duitsland',
         'Hans ter Horst',
         'Vanmorgen heel vroeg wakker en goed geslapen. Snel de boel bij elkaar en ach uur op de fiets om wat  achterstand weg te werken van gisteren. De route van Hellendoorn is als eerste aan de beurt. De route is gaaf met heel veel single tracks! De flow gaat lekker maar wel af en toe oppassen met het mulle zand her en der op de route. Onderweg naar de Sanatorium klim toch wel benieuwd of ik helemaal boven met deze heavy bike. De klim ging niet snel maar met goed kijken waar de beste lijn is kwam ik boven. Nu was het relax naar beneden, lekker op de pedalen staan en genieten van de route. De route van Nijverdal komt hier ook uit en dat komt goed uit want dat is de volgende die ik moet hebben. Bij pretpark Hellendoorn komt één van de mooiste gedeelte van de route, vindt ik. Normaal kun je hier lekker vlot doorheen fietsen met een geweldige flow op en neer. Maar vandaag doe ik het rustig aan. Het laatste gedeelte van Hellendoorn met Nijverdal is lekker op en neer en goed balanceren om niet van de fiets te vallen met al dat mulle zand. Goed opletten nu want de route van Nijverdal moet ik volgen en dat gaat gelukkig goed. De route is best aardig met veel single tracks door een bosrijk gebied. We gaan weer naar boven richting het plaatsje Hellendoorn en in het centrum even snel naar de appie voor wat snacks, M&M’s en hopelijk een klein potje Nutella. Helaas, alleen maar de grote potten. Verder met de route van Nijverdal langs de provinciale weg, door bossen met mooie tracks die lekker lopen. Bij het sanatorium ga ik links richting de route van Lemelerberg. Even lekker relax fietsen, armen op het stuur en lekker genieten van de mooie omgeving. Bij Lemele boven op de bult tijd voor een cappuccino, maar het cafeetje is gesloten. Dan maar zelf een pauze inlassen en de cappuccino erbij bedenken.
 Na een goede pauze beginnen we aan de route van Lemelerberg. Één van de oudste routes van Nederland en het blijft een gaaf rondje. Ik doe vandaag alleen het eerste gedeelte tot de splitsing naar Ommen. Dit is toch wel het mooiste gedeelte van de route. Veel op en af met een paar lastige klimmetjes en mooie hobbelige afdalingen door het mulle zand. Bij de splitsing naar de route van Ommen, vlug effe een foto van deze route voor bewijs. Gelukkig doen we Ommen ook de eerste helft want deze is echt geen ruk aan. Vooral het eerste gedeelte, alleen maar brede recht toe aan fietspaden. Het laatste gedeelte wordt wat beter maar ik vindt het geen ruk aan. Rond twaalf uur tijd voor een pauze aan de vecht. Lekker genieten van het uitzicht op een bankje naast een kleine boerderij waar een ooievaar in een boom zit. Deze zit ook te genieten en te klapperen met de snavel van geluk.
 Nu richting de route van Stegeren. Dit is een klein rondje van ongeveer 9 kilometer dat alle ruimte heeft benut van het klein stukje bos. Shit wat veel keren en draaien hier. En met al die wortels is dit niet het ideale rondje voor een bikepacker zoals ik. Shit wat hobbelen over de tracks. Dit heeft mij toch wel veel energie gekost, maar we moeten verder naar het noorden van Overijssel. Staphorst is aan de beurt maar voordat we daar zijn, eerst ruim 15 kilometer aan verbindingsweg. Bij Balkbrug zoek ik naar een cafeetje maar besloot om dat te gaan doen om de terugweg. Eerste de route van Staphorst afwerken en wat is dit een gaaf rondje. Shit wat heb ik hier genoten ondanks de vermoeidheid. Dit is oprecht een snel rondje met veel kombochten waar je de snelheid goed vast kunt houden. Ondanks de zware bike ging ik er mooi soepel doorheen. Toch wel regelmatig gestopt om even bij te komen. De vermoeidheid, zin in een warme hap en mijn achterste begon zeer te doen.
 Rond drie uur was ik weer terug in Balkbrug en bij de plaatselijke snackbar twee broodjes kroket en een SiSi besteld. Heerlijk een vette hap dat is toch beter dan al die snacks tussendoor.
 Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een camping te zoeken. Dus de laatste 15 kilometer lekker rustig aan, niks moet. Morgen is er weer een dag. Op de terugweg bij de route van Stegeren is er een mooie grote camping met zwembad dus daar gaan we naartoe. Lekker afkoelen in het zwembad van een mooie vermoeide dag. Avonds geen zin in koken dus lekker naar het terras voor een schnitzel met patat en de nodige Weizen bier om de dorst te lessen. Proost en welterusten!',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/3d47facc-b301-4438-ac32-30860f5cc506_052975B4-DF58-488F-94D4-841BC7426705.jpg',
+        '650aa548-3dbb-472c-a3d9-aab0a9bf054f_5414C835-9853-42A6-B381-910F4C3BE719.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 11);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (15,
-        'Rondje midden Nederland',
-        'Nederland',
+        'Tongariro Alpine Crossing',
+        'Nieuw Zeeland',
         'Klaas Janssen',
         'Het weer ziet er goed uit voor de komende dagen, dus ik ga een rondje midden Nederland fietsen en het thema is water voor deze trip. Deze keer geen single tracks of zandpaden, nee asfalt is de bedoeling.
 Vandaag rond 9 uur weggefietst vanaf kasteel Twickel. Een mooi startpunt om te beginnen, door de laan richting Azelo. Na Zenderen snel even MTB Matties Johan opzoeken, maar die was niet thuis. Dan maar verder richting Geesteren waar ik het Geestersche Stroomkanaal een tijdje volg. Mooie omgeving langs de waterkant waar ik even een pauze neem en geniet van het uitzicht over het water. Na de pauze gaat het richting Ommen. Onderweg is het druk met veel fietsers, het zal wel een toeristische route zijn. Vlak voor Ommen fiets ik door het Eerderveld, een mooie bos omgeving met een grote zandvlakte met de toepasselijke naam “Sahara”. Ik fiets vlug door Ommen en rond half twee is het tijd voor een pauze. In het plaatsje Vilsteren bij een restaurant bestel ik een cappuccino met een sandwich boerenham. Na de matige sandwich, maar de perfecte cappuccino fiets ik langs de Overijsselse Vecht. Bij een uitkijktoren ga snel even naar boven om van het uitzicht over de Vecht te genieten. Ik volg deze verder naar Zwolle en onderweg zie ik veel ooievaars. Ze pikken met hun snavel in de pas gemaaide grasvelden naar voedsel. Na de Overijsselse Vecht fiets ik door Zwolle richting de IJssel waar ik met een pontje deze wil overstekken. Maar helaas door de Corona is deze uit de vaart genomen. Shit! terug. Maar eerst even op een bankje mijn zelfgemaakte wrap opeten, heerlijk. Snel terug en bij de eerste brug de IJssel over om vervolgens bij Hattem de route verder te volgen. Ondertussen is het half vier, het is tijd om een camping op te zoeken. Ik zoek met Google Maps naar een boerencamping in de buurt. Ongeveer 10 kilometer verderop vindt ik er één vlak naast de route. De camping is vol maar gelukkig is er voor mij nog een kleine plekje naast het staanvlak.
 Ik heb geluk vandaag want het is donderdag patat dag. Ik bestel een grote punt zak eigengemaakte friet en en een klodder Mayo. Als toetje bak ik zelf nog een hamburger en een bbq worstje. Heerlijk, mijn energie level is weer op peil. ‘s Avonds kijk ik nog even naar de 60 plussen die een potje Jeu de Boules spelen.
 Het was vandaag een verrassende mooie dag. Normaal hou ik helemaal niet van asfalt fietsen maar heb vandaag toch wel genoten. Morgen het IJsselmeer over
 ',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/fff47788-41af-4dc0-9808-5fc89de04fc6_9F4FA27F-B040-4570-B872-B46474EBCFA1.jpg',
+        '9fe7bb26-49fb-40aa-8967-76e86f5c93bb_8011DF86-D45C-416F-A4B5-153B9CB6F3DD.jpeg',
         'Roadtrip',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 12);
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (16,
-        'MTBroutes Overijssel, dag 1',
+        'Dagtrip Utrecht',
         'Nederland',
         'Anne-Marie Rozendal',
         'We kunnen weer fietsen. De corona regels zijn weer wat versoepeld zodat je weer een beetje normaal naar de camping kunt gaan. Maar wel met de nodige afstand! Deze trip zat al een tijdje in mijn hoofd en het idee is ontstaan in Nieuw-Zeeland, waar ik de tour Aotearoa heb gefietst. De bedoeling van de trip is om alle mountainbike routes van Overijssel te fietsen in vijf dagen. Het weer is prima dus dat moet lukken.
@@ -106,14 +107,14 @@ Ook Markelo maar een klein stukje maar wel het mooiste gedeelte van de route. Bi
 Gelukkig in het centrum van Rijssen was er een bistro open voor kroketten met brood en een lekker biertje. Na de nodige koolhydraten was Wierden aan de beurt en deze fiets ik wel helemaal, maar de route was niet bijzonder met een paar mooie tracks bij het Lageveld, Meijerinksberg en Wittebeltsweg.
 Na Wierden het eerste gedeelte van de route van Holten. Ondertussen kan ik de benen wel voelen en het tempo gaat wat achteruit. Het mooie weer, het mooie uitzicht en het gevoel van lekker weer een paar dagen fietsen houd de moet erin. Ondertussen aangekomen bij de langste single track van Holten, shit wat gaat het stroef. Moet de concentratie er goed bijhouden, maar het is volop genieten hier. Het blijft een mooie stuk en het maakt de route ook uitdagend. Na de single track kan ik effe bijkomen om vervolgens aan de mooiste gedeelte van de route langs de Motieweg te beginnen. De route komt ten einde door een afzetting van een beschermde hagedis soort. Even op de navigatie kijken hoe nu verder en gelukkig kunnen we de route weer snel vervolgen na een kleine opleiding.
 Na 17.30 uur kom ik bij de camping Sallandhoeve aan voor de eerste overnachting. Krijg een mooi plekje bij een vijver, zet de tent op, snel even wat eten en lekker douchen. Tijd om de pan aan te steken voor een lekker hamburger en een bbq worstje en uiteraard een biertje op het terras. PROOST. 🍻',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/7791fe8d-ec44-499e-890f-aaf195e38285_62981886-CB53-4BA3-AAFB-0F4EA9430C62.jpg',
+        'e07b4fea-4e39-44d8-9b9c-c5e83d4ae22f_50F4638B-CA63-43DD-92AE-74E478C7994D.jpeg',
         'Vakantie',
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (17,
-        'MTBroutes Overijssel, dag 2',
+        'Rondje Achterhoek',
         'Nederland',
         'Anne-Marie Rozendal',
         'Vanmorgen vroeg wakker door de brullende kikkers.  Rustig de boel bij elkaar verzamelen en een goed ontbijtje met een gekookt eitje. Maar ik ben de Nutella verdomme vergeten. De beste jam op je brood voor het fietsen. Na negen uur op de fiets richting Deventer om daar drie routes te verkennen. Ben er nog nooit eerder geweest dus ik laat mij verrassen. De eerste route was een gedeelte van Heeten, niet bijzonder maar wel een paar mooie trails door het bos. Veel keren en draaien met veel f*cking wortels dat de tassen aan de vork steeds doet verdraaien. Effe stoppen om de tassen vast te zetten en de strips verplaatsen zodat de tassen nu wel blijven zitten.
@@ -122,22 +123,22 @@ Na twaalf uur kom ik bij de route aan. Even pauze voor wat voeding en hup verder
 Terug bij het begin punt van Diepenveen even snel kijken hoe nu verder naar de route van Heeten. De route is toch verrassend leuk. In ieder geval beter dan het eerste stuk van vanmorgen. Veel mooi single tracks en de meesten hebben een naam dat wordt aangegeven met een groot houten plak. Heb toch wel genoten van de route, maar kan wel merken dat het vlammetje langzaam uitgaat. Kosten toch aardig wat energie met een fiets van ruim 25KG over alle die single tracks. In Nieuw Heeten zit de route erop en in een klein cafeetje bestel ik een cappuccino met appelgebak, heerlijk!
 Nu vlug even de route van Holten afwerken wat toch niet zo makkelijk gaat. De benen zijn op! Het is tijd voor een camping voor de nacht. Maar eerst nog even een gedeelte van Hellendoorn doen. Na een klein half uurtje hou ik het voor gezien. Even op Google Maps kijken voor een camping in de buurt en verrek, er is een boeren camping vlak in de buurt. Top daar gaan we heen, camping Heldersbroek. Mooie rustig camping en het hele veld voor mij alleen met stoelen en tafel om bij te komen van toch wel een zware rit. Welterusten!
 ',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/6bb32833-6cee-40d5-9d21-6d4bad65e374_4354A30D-D93E-47FF-A6FA-E885AE97F7A1.jpg',
+        '9dbc4e53-db47-4ef0-86c5-080114cedb04_5D734103-BE8D-4E86-BCC7-2CD3F56314B7.jpeg',
         'Weekend',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 13);
 
 insert into travelstories (travelstory_id, title, country, author, article, image_url, trip_type,
                            trip_date, is_public, user_id)
 values (18,
-        'MTBroutes Overijssel, dag 3',
-        'Nederland',
+        'Wellington',
+        'Nieuw Zeeland',
         'Klaas Janssen',
         'Vanmorgen heel vroeg wakker en goed geslapen. Snel de boel bij elkaar en ach uur op de fiets om wat  achterstand weg te werken van gisteren. De route van Hellendoorn is als eerste aan de beurt. De route is gaaf met heel veel single tracks! De flow gaat lekker maar wel af en toe oppassen met het mulle zand her en der op de route. Onderweg naar de Sanatorium klim toch wel benieuwd of ik helemaal boven met deze heavy bike. De klim ging niet snel maar met goed kijken waar de beste lijn is kwam ik boven. Nu was het relax naar beneden, lekker op de pedalen staan en genieten van de route. De route van Nijverdal komt hier ook uit en dat komt goed uit want dat is de volgende die ik moet hebben. Bij pretpark Hellendoorn komt één van de mooiste gedeelte van de route, vindt ik. Normaal kun je hier lekker vlot doorheen fietsen met een geweldige flow op en neer. Maar vandaag doe ik het rustig aan. Het laatste gedeelte van Hellendoorn met Nijverdal is lekker op en neer en goed balanceren om niet van de fiets te vallen met al dat mulle zand. Goed opletten nu want de route van Nijverdal moet ik volgen en dat gaat gelukkig goed. De route is best aardig met veel single tracks door een bosrijk gebied. We gaan weer naar boven richting het plaatsje Hellendoorn en in het centrum even snel naar de appie voor wat snacks, M&M’s en hopelijk een klein potje Nutella. Helaas, alleen maar de grote potten. Verder met de route van Nijverdal langs de provinciale weg, door bossen met mooie tracks die lekker lopen. Bij het sanatorium ga ik links richting de route van Lemelerberg. Even lekker relax fietsen, armen op het stuur en lekker genieten van de mooie omgeving. Bij Lemele boven op de bult tijd voor een cappuccino, maar het cafeetje is gesloten. Dan maar zelf een pauze inlassen en de cappuccino erbij bedenken.
 Na een goede pauze beginnen we aan de route van Lemelerberg. Één van de oudste routes van Nederland en het blijft een gaaf rondje. Ik doe vandaag alleen het eerste gedeelte tot de splitsing naar Ommen. Dit is toch wel het mooiste gedeelte van de route. Veel op en af met een paar lastige klimmetjes en mooie hobbelige afdalingen door het mulle zand. Bij de splitsing naar de route van Ommen, vlug effe een foto van deze route voor bewijs. Gelukkig doen we Ommen ook de eerste helft want deze is echt geen ruk aan. Vooral het eerste gedeelte, alleen maar brede recht toe aan fietspaden. Het laatste gedeelte wordt wat beter maar ik vindt het geen ruk aan. Rond twaalf uur tijd voor een pauze aan de vecht. Lekker genieten van het uitzicht op een bankje naast een kleine boerderij waar een ooievaar in een boom zit. Deze zit ook te genieten en te klapperen met de snavel van geluk.
 Nu richting de route van Stegeren. Dit is een klein rondje van ongeveer 9 kilometer dat alle ruimte heeft benut van het klein stukje bos. Shit wat veel keren en draaien hier. En met al die wortels is dit niet het ideale rondje voor een bikepacker zoals ik. Shit wat hobbelen over de tracks. Dit heeft mij toch wel veel energie gekost, maar we moeten verder naar het noorden van Overijssel. Staphorst is aan de beurt maar voordat we daar zijn, eerst ruim 15 kilometer aan verbindingsweg. Bij Balkbrug zoek ik naar een cafeetje maar besloot om dat te gaan doen om de terugweg. Eerste de route van Staphorst afwerken en wat is dit een gaaf rondje. Shit wat heb ik hier genoten ondanks de vermoeidheid. Dit is oprecht een snel rondje met veel kombochten waar je de snelheid goed vast kunt houden. Ondanks de zware bike ging ik er mooi soepel doorheen. Toch wel regelmatig gestopt om even bij te komen. De vermoeidheid, zin in een warme hap en mijn achterste begon zeer te doen.
 Rond drie uur was ik weer terug in Balkbrug en bij de plaatselijke snackbar twee broodjes kroket en een SiSi besteld. Heerlijk een vette hap dat is toch beter dan al die snacks tussendoor.
 Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een camping te zoeken. Dus de laatste 15 kilometer lekker rustig aan, niks moet. Morgen is er weer een dag. Op de terugweg bij de route van Stegeren is er een mooie grote camping met zwembad dus daar gaan we naartoe. Lekker afkoelen in het zwembad van een mooie vermoeide dag. Avonds geen zin in koken dus lekker naar het terras voor een schnitzel met patat en de nodige Weizen bier om de dorst te lessen. Proost en welterusten!',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/3d47facc-b301-4438-ac32-30860f5cc506_052975B4-DF58-488F-94D4-841BC7426705.jpg',
+        'b6953264-7d91-49e8-9649-4fe949471b7a_4DF35A85-D008-4120-8D05-9FC067426225.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 12);
 
@@ -152,7 +153,7 @@ Na een goede pauze beginnen we aan de route van Lemelerberg. Één van de oudste
 Nu richting de route van Stegeren. Dit is een klein rondje van ongeveer 9 kilometer dat alle ruimte heeft benut van het klein stukje bos. Shit wat veel keren en draaien hier. En met al die wortels is dit niet het ideale rondje voor een bikepacker zoals ik. Shit wat hobbelen over de tracks. Dit heeft mij toch wel veel energie gekost, maar we moeten verder naar het noorden van Overijssel. Staphorst is aan de beurt maar voordat we daar zijn, eerst ruim 15 kilometer aan verbindingsweg. Bij Balkbrug zoek ik naar een cafeetje maar besloot om dat te gaan doen om de terugweg. Eerste de route van Staphorst afwerken en wat is dit een gaaf rondje. Shit wat heb ik hier genoten ondanks de vermoeidheid. Dit is oprecht een snel rondje met veel kombochten waar je de snelheid goed vast kunt houden. Ondanks de zware bike ging ik er mooi soepel doorheen. Toch wel regelmatig gestopt om even bij te komen. De vermoeidheid, zin in een warme hap en mijn achterste begon zeer te doen.
 Rond drie uur was ik weer terug in Balkbrug en bij de plaatselijke snackbar twee broodjes kroket en een SiSi besteld. Heerlijk een vette hap dat is toch beter dan al die snacks tussendoor.
 Tijdens het eten heb ik besloten om vlak voor de route van Hardenberg een camping te zoeken. Dus de laatste 15 kilometer lekker rustig aan, niks moet. Morgen is er weer een dag. Op de terugweg bij de route van Stegeren is er een mooie grote camping met zwembad dus daar gaan we naartoe. Lekker afkoelen in het zwembad van een mooie vermoeide dag. Avonds geen zin in koken dus lekker naar het terras voor een schnitzel met patat en de nodige Weizen bier om de dorst te lessen. Proost en welterusten!',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/3d47facc-b301-4438-ac32-30860f5cc506_052975B4-DF58-488F-94D4-841BC7426705.jpg',
+        '3d47facc-b301-4438-ac32-30860f5cc506_052975B4-DF58-488F-94D4-841BC7426705.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', true, 11);
 
@@ -168,6 +169,6 @@ Ook Markelo maar een klein stukje maar wel het mooiste gedeelte van de route. Bi
 Gelukkig in het centrum van Rijssen was er een bistro open voor kroketten met brood en een lekker biertje. Na de nodige koolhydraten was Wierden aan de beurt en deze fiets ik wel helemaal, maar de route was niet bijzonder met een paar mooie tracks bij het Lageveld, Meijerinksberg en Wittebeltsweg.
 Na Wierden het eerste gedeelte van de route van Holten. Ondertussen kan ik de benen wel voelen en het tempo gaat wat achteruit. Het mooie weer, het mooie uitzicht en het gevoel van lekker weer een paar dagen fietsen houd de moet erin. Ondertussen aangekomen bij de langste single track van Holten, shit wat gaat het stroef. Moet de concentratie er goed bijhouden, maar het is volop genieten hier. Het blijft een mooie stuk en het maakt de route ook uitdagend. Na de single track kan ik effe bijkomen om vervolgens aan de mooiste gedeelte van de route langs de Motieweg te beginnen. De route komt ten einde door een afzetting van een beschermde hagedis soort. Even op de navigatie kijken hoe nu verder en gelukkig kunnen we de route weer snel vervolgen na een kleine opleiding.
 Na 17.30 uur kom ik bij de camping Sallandhoeve aan voor de eerste overnachting. Krijg een mooi plekje bij een vijver, zet de tent op, snel even wat eten en lekker douchen. Tijd om de pan aan te steken voor een lekker hamburger en een bbq worstje en uiteraard een biertje op het terras. PROOST. 🍻',
-        'https://polarsteps.s3.amazonaws.com/u_1911213/7791fe8d-ec44-499e-890f-aaf195e38285_62981886-CB53-4BA3-AAFB-0F4EA9430C62.jpg',
+        '7791fe8d-ec44-499e-890f-aaf195e38285_62981886-CB53-4BA3-AAFB-0F4EA9430C62.jpeg',
         'Bikepacking',
         'Fri Dec 10 2021 16:43:40 GMT+0100', false, 11);
