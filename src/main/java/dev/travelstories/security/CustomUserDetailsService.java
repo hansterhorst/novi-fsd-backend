@@ -3,6 +3,7 @@ package dev.travelstories.security;
 
 import dev.travelstories.entities.Role;
 import dev.travelstories.entities.User;
+import dev.travelstories.exceptions.RecordNotFoundException;
 import dev.travelstories.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,10 +33,10 @@ public class CustomUserDetailsService implements UserDetailsService {
    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
       User user = userRepository.findByEmailOrUsername(usernameOrEmail, usernameOrEmail).orElseThrow(() ->
-         new UsernameNotFoundException("User not found with username or email." + usernameOrEmail));
+              new RecordNotFoundException("Gebruiker is niet bekend"));
 
       return new org.springframework.security.core.userdetails.User(user.getEmail(),
-         user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+              user.getPassword(), mapRolesToAuthorities(user.getRoles()));
    }
 
    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(List<Role> roles) {

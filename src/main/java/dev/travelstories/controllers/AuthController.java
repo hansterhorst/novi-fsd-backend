@@ -6,6 +6,7 @@ import dev.travelstories.dtos.LoginDTO;
 import dev.travelstories.dtos.RegisterDTO;
 import dev.travelstories.entities.Role;
 import dev.travelstories.entities.User;
+import dev.travelstories.exceptions.BadRequestException;
 import dev.travelstories.repositories.RoleRepository;
 import dev.travelstories.repositories.UserRepository;
 import dev.travelstories.security.JwtTokenProvider;
@@ -19,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +53,18 @@ public class AuthController {
     * */
    @PostMapping(path = "/login")
    @CrossOrigin(value = "http://localhost:3000")
-   public ResponseEntity<JwtTokenDTO> authenticateUser(@RequestBody LoginDTO loginDTO) {
+   public ResponseEntity<JwtTokenDTO> authenticateUser(@Valid @RequestBody LoginDTO loginDTO) {
+
+      try {
+         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                 loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
+      } catch (RuntimeException exception) {
+         throw new BadRequestException("Email of wachtwoord niet correct");
+      }
+
 
       Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-         loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
+              loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
 
       SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -69,18 +79,11 @@ public class AuthController {
     * */
    @PostMapping(path = "/register")
    @CrossOrigin(value = "http://localhost:3000")
-   public ResponseEntity<String> registerUser(@RequestBody RegisterDTO registerDTO) {
-
-      System.out.println(registerDTO.toString());
-
-      if (userRepository.existsByUsername(registerDTO.getUsername())) {
-         return new ResponseEntity<>("Username is already taken", HttpStatus.BAD_REQUEST);
-      }
+   public ResponseEntity<String> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {
 
       if (userRepository.existsByEmail(registerDTO.getEmail())) {
-         return new ResponseEntity<>("Email is already taken", HttpStatus.BAD_REQUEST);
+         throw new BadRequestException("Email is al in gebruik");
       }
-
 
       User user = new User();
       user.setFirstname(registerDTO.getFirstname());
@@ -98,8 +101,6 @@ public class AuthController {
 
       userRepository.save(user);
 
-      return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
-
+      return new ResponseEntity<>("Gebruiker is geregistreerd", HttpStatus.CREATED);
    }
-
 }
