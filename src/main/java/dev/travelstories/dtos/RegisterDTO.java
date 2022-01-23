@@ -2,22 +2,33 @@ package dev.travelstories.dtos;
 
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class RegisterDTO {
 
 
+   @NotBlank(message = "Voornaam is verplicht")
    private String firstname;
+
+   @NotBlank(message = "Achternaam is verplicht")
    private String lastname;
-   private String username;
+
+   @NotBlank(message = "Email is verplicht")
+   @Email()
    private String email;
+
+   @NotBlank(message = "Wachtwoord is verplicht")
+   @Size(min = 6, message = "Wachtwoord minimaal 6 characters lang")
    private String password;
 
    public RegisterDTO() {
    }
 
-   public RegisterDTO(String firstname, String lastname, String name, String username, String email, String password) {
+   public RegisterDTO(String firstname, String lastname, String email, String password) {
       this.firstname = firstname;
       this.lastname = lastname;
-      this.username = username;
       this.email = email;
       this.password = password;
    }
@@ -49,14 +60,6 @@ public class RegisterDTO {
 
    public void setLastname(String lastname) {
       this.lastname = lastname;
-   }
-
-   public String getUsername() {
-      return username;
-   }
-
-   public void setUsername(String username) {
-      this.username = username;
    }
 
    public String getEmail() {
