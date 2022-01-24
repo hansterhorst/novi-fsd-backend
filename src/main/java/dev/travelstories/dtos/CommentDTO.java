@@ -3,14 +3,16 @@ package dev.travelstories.dtos;
 import dev.travelstories.entities.Comment;
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class CommentDTO {
 
 
    private Long id;
-   private Date createdAt;
+   @Size(min = 2, max = 300, message = "Tekst bevat 2 tot 300 characters")
    private String comment;
+   private Date createdAt;
    private String fullname;
    private Long userId;
    private String profileImage;
@@ -50,7 +52,7 @@ public class CommentDTO {
       commentDTO.setCreatedAt(comment.getCreatedAt());
       commentDTO.setComment(comment.getComment());
       commentDTO.setFullname(user.getFirstname() + " " + user.getLastname());
-      commentDTO.setUserId(comment.getUserId());
+      commentDTO.setUserId(user.getId());
       commentDTO.profileImage(user.getProfileImage());
 
       return commentDTO;

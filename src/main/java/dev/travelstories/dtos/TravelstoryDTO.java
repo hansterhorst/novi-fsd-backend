@@ -4,17 +4,21 @@ import dev.travelstories.entities.Like;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
 public class TravelstoryDTO {
 
    private Long id;
+   @Size(min = 2, max = 100, message = "Titel tussen de 2 en 100 characters")
    private String title;
    private String author;
+   @Size(min = 100, message = "Artikel minimaal 100 characters")
    private String article;
    private Date tripDate;
    private String tripType;
+   @Size(min = 2, max = 100, message = "Land van bestemming tussen de 2 en 100 characters")
    private String country;
    private Boolean isPublic;
    private String imageUrl;

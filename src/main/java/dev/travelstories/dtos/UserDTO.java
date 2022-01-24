@@ -4,6 +4,7 @@ import dev.travelstories.entities.Follow;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 
@@ -16,8 +17,11 @@ public class UserDTO {
    private String username;
    private String password;
    private String profileImage;
+   @Size(min = 2, max = 50)
    private String city;
+   @Size(min = 2, max = 50)
    private String country;
+   @Size(min = 2, max = 100)
    private String bio;
    private List<Travelstory> travelstories;
    private List<Follow> follows;

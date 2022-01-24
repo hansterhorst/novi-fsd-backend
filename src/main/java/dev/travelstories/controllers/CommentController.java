@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static dev.travelstories.constants.Constants.*;
@@ -40,7 +41,7 @@ public class CommentController {
    @PostMapping(path = "/travelstories/{travelstoryId}/comments/user/{userId}")
    public ResponseEntity<String> createComment(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                @PathVariable(value = "userId") Long userId,
-                                               @RequestBody CommentDTO commentDTO) {
+                                               @Valid @RequestBody CommentDTO commentDTO) {
 
       Comment comment = CommentDTO.dtoToEntity(commentDTO);
       commentService.createComment(travelstoryId, userId, comment);

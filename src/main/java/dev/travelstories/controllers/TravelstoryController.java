@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static dev.travelstories.constants.Constants.*;
@@ -34,7 +35,7 @@ public class TravelstoryController {
    //   CREATE a new travelstory
    @PostMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/user/{userId}")
    public ResponseEntity<TravelstoryDTO> createTravelstory(@PathVariable(value = "userId") Long userId,
-                                                           @RequestBody TravelstoryDTO travelstoryDTO) {
+                                                           @Valid @RequestBody TravelstoryDTO travelstoryDTO) {
 
       Travelstory travelstory = TravelstoryDTO.dtoToEntity(travelstoryDTO);
 
@@ -77,7 +78,7 @@ public class TravelstoryController {
    //   UPDATE travelstory by id
    @PutMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> updateTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId,
-                                                               @RequestBody TravelstoryDTO travelstoryDTO) {
+                                                               @Valid @RequestBody TravelstoryDTO travelstoryDTO) {
 
       Travelstory travelstory = TravelstoryDTO.dtoToEntity(travelstoryDTO);
 

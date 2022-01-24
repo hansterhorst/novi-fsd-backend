@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,7 +76,7 @@ public class UserController {
    //   UPDATE user by id
    @PutMapping(path = "/user/{userId}")
    public ResponseEntity<String> updateUserById(@PathVariable(value = "userId") Long userId,
-                                                @RequestBody UserDTO userDTO) {
+                                                @Valid @RequestBody UserDTO userDTO) {
 
       User user = UserDTO.dtoToEntity(userDTO);
       userService.updateUserById(userId, user);
