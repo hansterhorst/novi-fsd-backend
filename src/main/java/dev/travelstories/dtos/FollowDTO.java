@@ -10,8 +10,10 @@ public class FollowDTO {
    private String followUserFullname;
    private String followUserProfileImage;
 
+
    public FollowDTO() {
    }
+
 
    public FollowDTO(Long id, Long authUserId, Long followUserId, String followUserFullname, String followUserProfileImage) {
       this.id = id;
@@ -21,9 +23,11 @@ public class FollowDTO {
       this.followUserProfileImage = followUserProfileImage;
    }
 
-   public static FollowDTO dtoToEntity() {
-      return null;
-   }
+
+//   public static FollowDTO dtoToEntity() {
+//      return null;
+//   }
+
 
    public static FollowDTO entityToDTO(Follow follow) {
 

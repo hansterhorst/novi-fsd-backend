@@ -23,6 +23,7 @@ public class RegisterDTO {
    @Size(min = 6, message = "Wachtwoord minimaal 6 characters lang")
    private String password;
 
+
    public RegisterDTO() {
    }
 
@@ -32,6 +33,7 @@ public class RegisterDTO {
       this.email = email;
       this.password = password;
    }
+
 
    public static User dtoToEntity(RegisterDTO registerDTO) {
 

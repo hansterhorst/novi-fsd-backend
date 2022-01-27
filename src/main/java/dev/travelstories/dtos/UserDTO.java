@@ -27,13 +27,9 @@ public class UserDTO {
    private List<Follow> follows;
 
 
-
-   /*
-    * CONSTRUCTORS
-    * */
-
    public UserDTO() {
    }
+
 
    public UserDTO(Long id, String firstname, String lastname, String email, String username, String password, String profileImage, List<Travelstory> travelstories, List<Follow> follows, String city, String country, String bio) {
       this.id = id;
@@ -51,10 +47,6 @@ public class UserDTO {
    }
 
 
-   /*
-    * METHODS
-    * */
-
    public static dev.travelstories.dtos.UserDTO entityToDTO(User user) {
 
       dev.travelstories.dtos.UserDTO userDTO = new dev.travelstories.dtos.UserDTO();
@@ -63,7 +55,6 @@ public class UserDTO {
       userDTO.setLastname(user.getLastname());
       userDTO.setEmail(user.getEmail());
       userDTO.setUsername(user.getUsername());
-//      userDTO.setPassword(user.getPassword());
       userDTO.setProfileImage(user.getProfileImage());
       userDTO.setTravelstories(user.getTravelstories());
       userDTO.setFollows(user.getFollows());

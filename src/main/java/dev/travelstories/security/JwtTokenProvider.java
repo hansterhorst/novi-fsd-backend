@@ -21,7 +21,6 @@ public class JwtTokenProvider {
    private int jwtExpirationInMilliseconds;
 
 
-   //   generate JWT-token
    public String generateToken(Authentication authentication) {
 
       Claims claims = Jwts.claims().setSubject(authentication.getName());
@@ -32,28 +31,27 @@ public class JwtTokenProvider {
       Date expireDate = new Date(currentDate.getTime() + jwtExpirationInMilliseconds);
 
       String token = Jwts.builder()
-         .setSubject(username)
-         .setClaims(claims)
-         .setIssuedAt(new Date())
-         .setExpiration(expireDate)
-         .signWith(SignatureAlgorithm.HS512, jwtSecret)
-         .compact();
+              .setSubject(username)
+              .setClaims(claims)
+              .setIssuedAt(new Date())
+              .setExpiration(expireDate)
+              .signWith(SignatureAlgorithm.HS512, jwtSecret)
+              .compact();
 
       return token;
    }
 
-   //   get username from JWT-token
+
    public String getUsernameFromJwt(String token) {
       Claims claims = Jwts.parser()
-         .setSigningKey(jwtSecret)
-         .parseClaimsJws(token)
-         .getBody();
+              .setSigningKey(jwtSecret)
+              .parseClaimsJws(token)
+              .getBody();
 
       return claims.getSubject();
    }
 
 
-   // validate JWT-token
    public boolean validateToken(String token) {
       try {
          Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);

@@ -30,34 +30,25 @@ public class UserProfileImageService {
       this.userRepository = userRepository;
    }
 
-   /*
-    * USER PROFILE IMAGE
-    * */
+
    public void uploadUserProfileImage(Long userId, MultipartFile file) {
 
-      // check if image not empty
       isFileEmptyOrThrow(file);
 
-      // if file is an image
       isImageOrThrow(file);
 
-      // user exists in database
       User user = getUserOrThrow(userId);
 
-      // get some metadata from file if any
       Map<String, String> metadata = getMetadata(file);
 
-      // create paths for file structuring
       String path = String.format("%s/%s/profile", awsBucketName, user.getId());
       String filename = String.format("%s", file.getOriginalFilename());
 
 
       try {
 
-         // Upload image aws s3 server
          awsImageStoreService.save(path, filename, Optional.of(metadata), file.getInputStream());
 
-         // Update user profile image
          user.setProfileImage(filename);
          userRepository.save(user);
 
@@ -69,20 +60,13 @@ public class UserProfileImageService {
 
    public byte[] downloadUserProfileImage(Long userId) {
 
-      // user exists in database
       User user = getUserOrThrow(userId);
 
-      // create download link
       String path = String.format("%s/%s/profile", awsBucketName, user.getId());
 
       return awsImageStoreService.download(path, user.getProfileImage());
    }
 
-
-
-   /*
-    * PRIVATE METHODES
-    * */
 
    private Map<String, String> getMetadata(MultipartFile file) {
       Map<String, String> metadata = new HashMap<>();

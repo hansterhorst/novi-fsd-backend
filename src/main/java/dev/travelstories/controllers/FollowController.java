@@ -28,7 +28,7 @@ public class FollowController {
    //   CREATE a follow user
    @PostMapping(path = "/{userId}/follow/{authUserId}")
    public ResponseEntity<FollowDTO> createFollowUserByUserId(@PathVariable(value = "userId") Long userId,
-                                                          @PathVariable(value = "authUserId") Long authUserId) {
+                                                             @PathVariable(value = "authUserId") Long authUserId) {
 
       Follow followUser = followService.createFollowUser(userId, authUserId);
 

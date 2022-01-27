@@ -90,12 +90,6 @@ public class TravelstoryController {
    }
 
 
-
-
-   /*
-    * PUBLIC CRUD OPERATIONS
-    * */
-
    //   GET all public travelstories
    @GetMapping(path = PUBLIC_ACCESS_URL + "/travelstories")
    public ResponseEntity<List<TravelstoryDTO>> getAllPublicTravelstories() {

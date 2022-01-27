@@ -25,18 +25,14 @@ public class FollowService {
    }
 
 
-   /*
-    * CRUD OPERATIONS
-    * */
-
    //   POST a new follow user
    public Follow createFollowUser(Long userId, Long authUserId) {
 
       User user = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       User authUser = userRepository.findById(authUserId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("Follow user with id: %s not found.", authUserId)));
+              new RecordNotFoundException(String.format("Follow user with id: %s not found.", authUserId)));
 
       if (user.getId().equals(authUser.getId())) {
          throw new BadRequestException("Can not follow yourself");
@@ -55,10 +51,10 @@ public class FollowService {
    public List<Follow> getAllFollowers(Long userId) {
 
       User user = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       return followRepository.findByFollowUserId(user.getId()).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id %s not found", user.getId())));
+              new RecordNotFoundException(String.format("User with id %s not found", user.getId())));
    }
 
 
@@ -66,13 +62,13 @@ public class FollowService {
    public void deleteFollowByUserId(Long userId, Long authUserId) {
 
       User user = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       User authUser = userRepository.findById(authUserId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", authUserId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", authUserId)));
 
       List<Follow> follows = followRepository.findByFollowUserId(user.getId()).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id %s not found", user.getId())));
+              new RecordNotFoundException(String.format("User with id %s not found", user.getId())));
 
       for (Follow follow : follows) {
          if (follow.getAuthUserId().equals(authUser.getId())) {

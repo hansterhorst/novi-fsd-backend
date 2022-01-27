@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface TravelstoryRepository extends JpaRepository<Travelstory, Long> {
 
-   // custom query
    @Query("SELECT t FROM Travelstory t WHERE t.isPublic = true")
    List<Travelstory> findAllPublicTravelstories();
 

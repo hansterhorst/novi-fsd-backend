@@ -18,9 +18,6 @@ public class TravelstoryService {
    private final UserRepository userRepository;
 
 
-   /*
-    * CONSTRUCTOR
-    * */
    @Autowired
    public TravelstoryService(TravelstoryRepository travelstoryRepository, UserRepository userRepository) {
 
@@ -29,10 +26,6 @@ public class TravelstoryService {
 
    }
 
-
-   /*
-    * CRUD operations
-    * */
 
    //   POST a new travelstory
    public Travelstory createTravelstory(Long userId, Travelstory travelstory) {
@@ -115,6 +108,4 @@ public class TravelstoryService {
 
       return String.format("Travelstory with id: %s is successfully deleted.", travelstoryId);
    }
-
-
 }

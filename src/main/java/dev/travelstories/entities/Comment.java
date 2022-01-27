@@ -28,11 +28,6 @@ public class Comment {
    public Travelstory travelstory;
 
 
-
-   /*
-    * CONSTRUCTORS
-    * */
-
    public Comment() {
    }
 
@@ -44,10 +39,6 @@ public class Comment {
       this.userId = userId;
    }
 
-
-   /*
-    * GETTERS & SETTERS
-    * */
 
    public Long getId() {
       return id;

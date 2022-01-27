@@ -71,5 +71,4 @@ public class LikeService {
          throw new BadRequestException("Nothing to delete");
       }
    }
-
 }

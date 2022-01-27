@@ -20,15 +20,10 @@ public class Follow {
    //   User who is follow you
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "follow_user_id", referencedColumnName = "user_id", nullable = false,
-      foreignKey = @ForeignKey(name = "FK_follow_user_key"))
+           foreignKey = @ForeignKey(name = "FK_follow_user_key"))
    @JsonBackReference
    private User followUser;
 
-
-
-   /*
-    * CONSTRUCTORS
-    * */
 
    public Follow() {
    }
@@ -39,9 +34,6 @@ public class Follow {
       this.followUser = followUser;
    }
 
-   /*
-    * GETTERS & SETTERS
-    * */
 
    public Long getId() {
       return id;

@@ -39,7 +39,7 @@ public class Travelstory {
 
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false,
-      foreignKey = @ForeignKey(name = "FK_travelstory_user_key"))
+           foreignKey = @ForeignKey(name = "FK_travelstory_user_key"))
    @JsonBackReference // to solve the infinite recursion problem
    private User user;
 
@@ -58,10 +58,6 @@ public class Travelstory {
    private List<Like> likes = new ArrayList<>();
 
 
-   /*
-    * CONSTRUCTORS
-    * */
-
    public Travelstory() {
    }
 
@@ -78,10 +74,6 @@ public class Travelstory {
       this.user = user;
    }
 
-
-   /*
-    * GETTERS & SETTERS
-    * */
 
    public Long getId() {
       return id;

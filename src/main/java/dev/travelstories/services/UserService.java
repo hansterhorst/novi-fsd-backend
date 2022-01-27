@@ -21,10 +21,6 @@ public class UserService {
    }
 
 
-   /*
-    * CRUD OPERATIONS
-    * */
-
    //   CREATE new user
    public void createNewUser(User user) {
 
@@ -48,14 +44,14 @@ public class UserService {
    //   GET user by userId
    public User getUserById(Long userId) {
       return userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
    }
 
 
    //   GET user by userId
    public User getUserByEmail(String email) {
       return userRepository.findByEmail(email).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with email: %s not found.", email)));
+              new RecordNotFoundException(String.format("User with email: %s not found.", email)));
    }
 
 
@@ -63,7 +59,7 @@ public class UserService {
    public void updateUserById(Long userId, User user) {
 
       User updateUser = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       updateUser.setFirstname(user.getFirstname());
       updateUser.setLastname(user.getLastname());
@@ -81,7 +77,7 @@ public class UserService {
    public void deleteUserById(Long userId) {
 
       User deleteUser = userRepository.findById(userId).orElseThrow(() ->
-         new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
 
       deleteUser.getRoles().removeAll(deleteUser.getRoles());
 

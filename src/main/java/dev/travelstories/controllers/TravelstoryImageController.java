@@ -33,6 +33,7 @@ public class TravelstoryImageController {
       travelstoryImageService.uploadTravelstoryImages(userId, travelstoryId, file);
    }
 
+
    //   download a travelstory image
    @GetMapping(path = PUBLIC_ACCESS_URL + "/user/{userId}/travelstory/{travelstoryId}/images/download")
    @CrossOrigin(value = "http://localhost:3000")

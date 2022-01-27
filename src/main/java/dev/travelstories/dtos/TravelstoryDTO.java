@@ -49,7 +49,7 @@ public class TravelstoryDTO {
 
    public static TravelstoryDTO entityToDTO(Travelstory travelstory) {
 
-      User user = new User();
+//      User user = new User();
       TravelstoryDTO travelstoryDTO = new TravelstoryDTO();
       travelstoryDTO.setId(travelstory.getId());
       travelstoryDTO.setTitle(travelstory.getTitle());

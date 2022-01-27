@@ -21,9 +21,9 @@ public class UserProfileImageController {
 
 
    @PostMapping(
-      path = AUTHORITY_USER_ACCESS_URL + "/user/{userId}/profile-image/upload",
-      consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE
+           path = AUTHORITY_USER_ACCESS_URL + "/user/{userId}/profile-image/upload",
+           consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+           produces = MediaType.APPLICATION_JSON_VALUE
    )
    @CrossOrigin(value = "http://localhost:3000")
    public void uploadUserProfileImage(@PathVariable(value = "userId") Long userId,

@@ -32,9 +32,6 @@ public class TravelstoryImageService {
    }
 
 
-   /*
-    * USER PROFILE IMAGE
-    * */
    public void uploadTravelstoryImages(Long userId, Long travelstoryId, MultipartFile file) {
 
       // check if image not empty
@@ -59,7 +56,6 @@ public class TravelstoryImageService {
 
          // Upload image aws s3 server
          awsImageStoreService.save(path, filename, Optional.of(metadata), file.getInputStream());
-
 
          // Update user profile image
          travelstory.setImageUrl(file.getOriginalFilename());

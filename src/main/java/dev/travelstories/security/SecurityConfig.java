@@ -47,28 +47,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(HttpSecurity http) throws Exception {
       http
-         .csrf().disable().cors().and()
-         .exceptionHandling()
-         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-         .and()
-         .sessionManagement()
-         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-         .and()
-         .authorizeRequests()
-         .antMatchers(AUTHORITY_ADMIN_ACCESS_URL + "/**").hasAnyRole(ROLE_ADMIN)
-         .antMatchers(AUTHORITY_USER_ACCESS_URL + "/**").hasAnyRole(ROLE_USER, ROLE_ADMIN)
-         .antMatchers(HttpMethod.GET, PUBLIC_ACCESS_URL + "/**").permitAll()
-         .antMatchers(HttpMethod.POST, AUTHENTICATION_ACCESS_URL + "/**").permitAll()
-         .anyRequest()
-         .authenticated();
+              .csrf().disable().cors().and()
+              .exceptionHandling()
+              .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+              .and()
+              .sessionManagement()
+              .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+              .and()
+              .authorizeRequests()
+              .antMatchers(AUTHORITY_ADMIN_ACCESS_URL + "/**").hasAnyRole(ROLE_ADMIN)
+              .antMatchers(AUTHORITY_USER_ACCESS_URL + "/**").hasAnyRole(ROLE_USER, ROLE_ADMIN)
+              .antMatchers(HttpMethod.GET, PUBLIC_ACCESS_URL + "/**").permitAll()
+              .antMatchers(HttpMethod.POST, AUTHENTICATION_ACCESS_URL + "/**").permitAll()
+              .anyRequest()
+              .authenticated();
 
       http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
    }
+
 
    @Override
    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
       auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
    }
+
 
    @Override
    @Bean

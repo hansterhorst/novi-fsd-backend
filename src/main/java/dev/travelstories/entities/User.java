@@ -35,20 +35,16 @@ public class User {
    //   You're following other users
    @OneToMany(mappedBy = "followUser", cascade = CascadeType.ALL, orphanRemoval = true)
    @JsonManagedReference
-   private List<Follow> follows= new ArrayList<>();
+   private List<Follow> follows = new ArrayList<>();
 
 
    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
    @JoinTable(name = "user_roles",
-      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+           joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+           inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
    )
    private List<Role> roles = new ArrayList<>();
 
-
-   /*
-    * CONSTRUCTORS
-    * */
 
    public User() {
    }
@@ -66,10 +62,6 @@ public class User {
       this.bio = bio;
    }
 
-
-   /*
-    * GETTERS & SETTERS
-    * */
 
    public Long getId() {
       return id;

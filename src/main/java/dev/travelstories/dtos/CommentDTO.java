@@ -18,11 +18,6 @@ public class CommentDTO {
    private String profileImage;
 
 
-
-   /*
-    * CONSTRUCTORS
-    * */
-
    public CommentDTO() {
    }
 
@@ -36,11 +31,6 @@ public class CommentDTO {
       this.profileImage = profileImage;
    }
 
-
-
-   /*
-    * METHODES
-    * */
 
    //   Map entity to dto
    public static CommentDTO entityToDTO(Comment comment) {
@@ -58,6 +48,7 @@ public class CommentDTO {
       return commentDTO;
    }
 
+
    //   Map dto to entity
    public static Comment dtoToEntity(CommentDTO commentDTO) {
 
@@ -71,11 +62,6 @@ public class CommentDTO {
       return comment;
    }
 
-
-
-   /*
-    * GETTERS & SETTERS
-    * */
 
    public Long getId() {
       return id;

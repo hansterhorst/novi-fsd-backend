@@ -48,9 +48,6 @@ public class AuthController {
    }
 
 
-   /*
-    * User login
-    * */
    @PostMapping(path = "/login")
    @CrossOrigin(value = "http://localhost:3000")
    public ResponseEntity<JwtTokenDTO> authenticateUser(@Valid @RequestBody LoginDTO loginDTO) {
@@ -74,9 +71,6 @@ public class AuthController {
    }
 
 
-   /*
-    * User registration
-    * */
    @PostMapping(path = "/register")
    @CrossOrigin(value = "http://localhost:3000")
    public ResponseEntity<String> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {

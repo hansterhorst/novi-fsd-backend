@@ -28,24 +28,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                    HttpServletResponse response,
                                    FilterChain filterChain) throws ServletException, IOException {
 
-      // get JWT (token) from http request
       String token = getJwtTokenFromRequest(request);
 
-      // validate token
       if (StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)) {
 
-         // get username from token
          String username = jwtTokenProvider.getUsernameFromJwt(token);
 
-         // load user associated with token
          UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
 
          UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-            userDetails, null, userDetails.getAuthorities()
+                 userDetails, null, userDetails.getAuthorities()
          );
          authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-         // set spring security
          SecurityContextHolder.getContext().setAuthentication(authenticationToken);
       }
 
@@ -53,7 +48,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
    }
 
-   //   get bearer access token
+
    private String getJwtTokenFromRequest(HttpServletRequest request) {
 
       String bearerToken = request.getHeader("Authorization");

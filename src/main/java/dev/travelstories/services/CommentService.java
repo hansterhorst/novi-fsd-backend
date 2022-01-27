@@ -25,10 +25,6 @@ public class CommentService {
    private final TravelstoryRepository travelstoryRepository;
 
 
-   /*
-    * CONSTRUCTOR
-    * */
-
    @Autowired
    public CommentService(CommentRepository commentRepository, UserRepository userRepository, TravelstoryRepository travelstoryRepository) {
       this.commentRepository = commentRepository;
@@ -36,10 +32,6 @@ public class CommentService {
       this.travelstoryRepository = travelstoryRepository;
    }
 
-
-   /*
-    * CRUD OPERATIONS
-    * */
 
    //   POST a new comment on a travelstory by travelId
    public void createComment(Long travelstoryId, Long userId, Comment comment) {
@@ -80,7 +72,6 @@ public class CommentService {
 
          commentDTOList.add(commentDTO);
       }
-
 
       return commentDTOList;
    }
