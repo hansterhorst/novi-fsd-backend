@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static dev.travelstories.constants.Constants.AUTHORITY_ACCESS_URL;
+import static dev.travelstories.constants.Constants.AUTHORITY_USER_ACCESS_URL;
 
 @RestController
-@RequestMapping(path = AUTHORITY_ACCESS_URL)
+@RequestMapping(path = AUTHORITY_USER_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class LikeController {
 

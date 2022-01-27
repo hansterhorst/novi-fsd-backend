@@ -19,21 +19,15 @@ public class TravelstoryController {
 
    private final TravelstoryService travelstoryService;
 
-   /*
-    * CONSTRUCTOR
-    * */
+
    @Autowired
    public TravelstoryController(TravelstoryService travelstoryService) {
       this.travelstoryService = travelstoryService;
    }
 
 
-   /*
-    *  CRUD OPERATIONS
-    * */
-
    //   CREATE a new travelstory
-   @PostMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/user/{userId}")
+   @PostMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories/user/{userId}")
    public ResponseEntity<TravelstoryDTO> createTravelstory(@PathVariable(value = "userId") Long userId,
                                                            @Valid @RequestBody TravelstoryDTO travelstoryDTO) {
 
@@ -46,7 +40,7 @@ public class TravelstoryController {
 
 
    //   GET all travelstories
-   @GetMapping(path = AUTHORITY_ACCESS_URL + "/travelstories")
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories")
    public ResponseEntity<List<TravelstoryDTO>> getAllTravelstories() {
 
       List<Travelstory> travelstoryList = travelstoryService.getAllTravelstories();
@@ -57,7 +51,7 @@ public class TravelstoryController {
 
 
    //   GET all travelstories by userId
-   @GetMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/user/{userId}")
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories/user/{userId}")
    public ResponseEntity<List<TravelstoryDTO>> getAllTravelstoriesByUserId(@PathVariable(value = "userId") Long userId) {
 
       List<Travelstory> travelstoryList = travelstoryService.getAllTravelstoriesByUserId(userId);
@@ -68,7 +62,7 @@ public class TravelstoryController {
 
 
    //   GET travelstory by id
-   @GetMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> getTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
       return new ResponseEntity<>(travelstoryService.getTravelstoryById(travelstoryId), HttpStatus.OK);
@@ -76,7 +70,7 @@ public class TravelstoryController {
 
 
    //   UPDATE travelstory by id
-   @PutMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
+   @PutMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<TravelstoryDTO> updateTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                                @Valid @RequestBody TravelstoryDTO travelstoryDTO) {
 
@@ -89,7 +83,7 @@ public class TravelstoryController {
 
 
    //   DELETE travelstory by id
-   @DeleteMapping(path = AUTHORITY_ACCESS_URL + "/travelstories/{travelstoryId}")
+   @DeleteMapping(path = AUTHORITY_USER_ACCESS_URL + "/travelstories/{travelstoryId}")
    public ResponseEntity<String> deleteTravelstoryById(@PathVariable(value = "travelstoryId") Long travelstoryId) {
 
       return new ResponseEntity<>(travelstoryService.deleteTravelstoryById(travelstoryId), HttpStatus.OK);

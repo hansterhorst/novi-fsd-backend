@@ -16,26 +16,19 @@ import static dev.travelstories.constants.Constants.*;
 
 
 @RestController
-@RequestMapping(path = AUTHORITY_ACCESS_URL)
+@RequestMapping(path = AUTHORITY_USER_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class CommentController {
 
 
    private final CommentService commentService;
 
-   /*
-    * CONSTRUCTORS
-    * */
 
    @Autowired
    public CommentController(CommentService commentService) {
       this.commentService = commentService;
    }
 
-
-   /*
-    * CRUD OPERATIONS
-    * */
 
    //   CREATE a new comment on a travelstory by travelstoryId
    @PostMapping(path = "/travelstories/{travelstoryId}/comments/user/{userId}")

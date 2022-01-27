@@ -11,10 +11,10 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static dev.travelstories.constants.Constants.AUTHORITY_ACCESS_URL;
+import static dev.travelstories.constants.Constants.AUTHORITY_ADMIN_ACCESS_URL;
+import static dev.travelstories.constants.Constants.AUTHORITY_USER_ACCESS_URL;
 
 @RestController
-@RequestMapping(path = AUTHORITY_ACCESS_URL)
 @CrossOrigin(value = "http://localhost:3000")
 public class UserController {
 
@@ -26,12 +26,8 @@ public class UserController {
    }
 
 
-   /*
-    * CRUD OPERATIONS
-    * */
-
    //   CREATE new user
-   @PostMapping()
+   @PostMapping(path = AUTHORITY_USER_ACCESS_URL)
    public ResponseEntity<String> createNewUser(@RequestBody UserDTO userDTO) {
 
       User user = UserDTO.dtoToEntity(userDTO);
@@ -43,7 +39,7 @@ public class UserController {
 
 
    //   GET all users
-   @GetMapping()
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL)
    public ResponseEntity<List<UserDTO>> getAllUsers() {
 
       List<User> userList = userService.getAllUsers();
@@ -54,7 +50,7 @@ public class UserController {
 
 
    //   GET user by id
-   @GetMapping(path = "/user/{userId}")
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL + "/user/{userId}")
    public ResponseEntity<UserDTO> getUserById(@PathVariable(value = "userId") Long userId) {
 
       User user = userService.getUserById(userId);
@@ -64,7 +60,7 @@ public class UserController {
 
 
    //   GET user by email
-   @GetMapping(path = "/user")
+   @GetMapping(path = AUTHORITY_USER_ACCESS_URL + "/user")
    public ResponseEntity<UserDTO> getUserByEmail(@RequestParam(name = "email") String email) {
 
       User user = userService.getUserByEmail(email);
@@ -74,7 +70,7 @@ public class UserController {
 
 
    //   UPDATE user by id
-   @PutMapping(path = "/user/{userId}")
+   @PutMapping(path = AUTHORITY_USER_ACCESS_URL + "/user/{userId}")
    public ResponseEntity<String> updateUserById(@PathVariable(value = "userId") Long userId,
                                                 @Valid @RequestBody UserDTO userDTO) {
 
@@ -86,7 +82,7 @@ public class UserController {
 
 
    //   DELETE user by id
-   @DeleteMapping(path = "/user/{userId}")
+   @DeleteMapping(path = AUTHORITY_ADMIN_ACCESS_URL + "/user/{userId}")
    public ResponseEntity<String> deleteUserById(@PathVariable(value = "userId") Long userId) {
 
       userService.deleteUserById(userId);
