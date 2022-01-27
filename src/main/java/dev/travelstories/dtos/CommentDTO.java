@@ -10,7 +10,7 @@ public class CommentDTO {
 
 
    private Long id;
-   @Size(min = 2, max = 300, message = "Tekst bevat 2 tot 300 characters")
+   @Size(min = 2, max = 300, message = "Reactie bevat 2 tot 300 characters")
    private String comment;
    private Date createdAt;
    private String fullname;

@@ -4,6 +4,8 @@ import dev.travelstories.entities.Like;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
@@ -14,13 +16,16 @@ public class TravelstoryDTO {
    @Size(min = 2, max = 100, message = "Titel tussen de 2 en 100 characters")
    private String title;
    private String author;
-   @Size(min = 100, message = "Artikel minimaal 100 characters")
+   @Size(min = 100, message = "Reisverhaal minimaal 100 characters")
    private String article;
+   @NotNull(message = "Een datum is verplicht")
    private Date tripDate;
+   @NotNull(message = "Een type reis is verplicht")
    private String tripType;
    @Size(min = 2, max = 100, message = "Land van bestemming tussen de 2 en 100 characters")
    private String country;
    private Boolean isPublic;
+   @NotBlank(message = "Eén foto is verplicht")
    private String imageUrl;
    private Long userId;
    private String authorImage;
