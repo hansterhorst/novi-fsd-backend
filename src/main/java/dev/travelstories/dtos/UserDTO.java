@@ -17,11 +17,11 @@ public class UserDTO {
    private String username;
    private String password;
    private String profileImage;
-   @Size(min = 2, max = 50)
+   @Size(min = 2, max = 50, message = "Woonplaats tussen de 2 en 250 characters")
    private String city;
-   @Size(min = 2, max = 50)
+   @Size(min = 2, max = 50, message = "Land tussen de 2 en 250 characters")
    private String country;
-   @Size(min = 2, max = 100)
+   @Size(min = 2, max = 300, message = "Bio tussen de 2 en 250 characters")
    private String bio;
    private List<Travelstory> travelstories;
    private List<Follow> follows;

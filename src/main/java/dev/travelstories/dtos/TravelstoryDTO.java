@@ -4,7 +4,6 @@ import dev.travelstories.entities.Like;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -25,7 +24,6 @@ public class TravelstoryDTO {
    @Size(min = 2, max = 100, message = "Land van bestemming tussen de 2 en 100 characters")
    private String country;
    private Boolean isPublic;
-   @NotBlank(message = "Eén foto is verplicht")
    private String imageUrl;
    private Long userId;
    private String authorImage;
