@@ -4,6 +4,8 @@ package dev.travelstories.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,6 +22,7 @@ import static dev.travelstories.constants.Constants.*;
 
 @Configuration
 @EnableWebSecurity
+@Order(value = Ordered.HIGHEST_PRECEDENCE)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -71,5 +74,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    public AuthenticationManager authenticationManagerBean() throws Exception {
       return super.authenticationManagerBean();
    }
-
 }

@@ -29,13 +29,13 @@ public class User {
 
    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
    @JsonManagedReference // to solve the infinite recursion problem
-   private List<Travelstory> travelstories;
+   private List<Travelstory> travelstories = new ArrayList<>();
 
 
    //   You're following other users
    @OneToMany(mappedBy = "followUser", cascade = CascadeType.ALL, orphanRemoval = true)
    @JsonManagedReference
-   private List<Follow> follows;
+   private List<Follow> follows= new ArrayList<>();
 
 
    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
@@ -53,16 +53,14 @@ public class User {
    public User() {
    }
 
-   public User(Long id, String firstname, String lastname, String username, String email, String password, List<Travelstory> travelstories, String profileImage, List<Follow> follows, String city, String country, String bio) {
+   public User(Long id, String firstname, String lastname, String username, String email, String password, String profileImage, String city, String country, String bio) {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
       this.username = username;
       this.email = email;
       this.password = password;
-      this.travelstories = travelstories;
       this.profileImage = profileImage;
-      this.follows = follows;
       this.city = city;
       this.country = country;
       this.bio = bio;

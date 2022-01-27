@@ -45,7 +45,7 @@ public class LikeController {
    public ResponseEntity<String> deleteLikeByUserId(@PathVariable(value = "travelstoryId") Long travelstoryId,
                                                     @PathVariable(value = "userId") Long userId) {
 
-      likeService.deleteLikeByUserId(travelstoryId, userId);
+      likeService.deleteTravelstoryLikeByUserId(travelstoryId, userId);
 
       return new ResponseEntity<>("Like successfully deleted", HttpStatus.OK);
    }

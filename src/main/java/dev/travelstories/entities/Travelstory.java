@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,12 +50,12 @@ public class Travelstory {
     * is the forward part of reference – the one that gets serialized normally.
     * */
    @JsonManagedReference
-   private List<Comment> comments;
+   private List<Comment> comments = new ArrayList<>();
 
 
    @OneToMany(mappedBy = "travelstory", cascade = CascadeType.ALL, orphanRemoval = true)
    @JsonManagedReference
-   private List<Like> likes;
+   private List<Like> likes = new ArrayList<>();
 
 
    /*
@@ -64,7 +65,7 @@ public class Travelstory {
    public Travelstory() {
    }
 
-   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user, List<Comment> comments, List<Like> likes ) {
+   public Travelstory(Long id, String title, String author, String article, Date tripDate, String tripType, String country, Boolean isPublic, String imageUrl, User user) {
       this.id = id;
       this.title = title;
       this.author = author;
@@ -75,8 +76,6 @@ public class Travelstory {
       this.isPublic = isPublic;
       this.imageUrl = imageUrl;
       this.user = user;
-      this.comments = comments;
-      this.likes = likes;
    }
 
 
