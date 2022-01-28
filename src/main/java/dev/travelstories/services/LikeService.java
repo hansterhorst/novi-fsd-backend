@@ -66,8 +66,6 @@ public class LikeService {
       for (Like like : likes) {
          if (like.getUserId().equals(user.getId())) {
             likeRepository.delete(like);
-         } else {
-            throw new BadRequestException("Nothing to delete");
          }
       }
    }

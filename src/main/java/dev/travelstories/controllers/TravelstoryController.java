@@ -115,8 +115,6 @@ public class TravelstoryController {
       for (Travelstory story : travelstoryList) {
          if (story.getId().equals(travelstoryId)) {
             travelstory = story;
-         } else {
-            throw new BadRequestException(String.format("Travelstory with id: %s is not public", travelstoryId));
          }
       }
 

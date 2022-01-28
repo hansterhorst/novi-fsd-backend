@@ -28,9 +28,9 @@ public class FollowService {
    //   POST a new follow user
    public Follow createFollowUser(Long userId, Long authUserId) {
 
-      User user = getUserByIdOrElseThrow(authUserId);
+      User user = getUserByIdOrElseThrow(userId);
 
-      User authUser = getUserByIdOrElseThrow(userId);
+      User authUser = getUserByIdOrElseThrow(authUserId);
 
       if (user.getId().equals(authUser.getId())) {
          throw new BadRequestException("Can not follow yourself");
@@ -67,8 +67,6 @@ public class FollowService {
       for (Follow follow : follows) {
          if (follow.getAuthUserId().equals(authUser.getId())) {
             followRepository.delete(follow);
-         } else {
-            throw new BadRequestException("Nothing to delete");
          }
       }
    }
