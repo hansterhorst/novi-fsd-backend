@@ -19,11 +19,12 @@ import java.util.List;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc()
-@ActiveProfiles("test")
+@ActiveProfiles("test") // disable security, see method SecurityTestConfig() in the security folder
 class UserControllerTest {
 
    @Autowired
@@ -64,7 +65,7 @@ class UserControllerTest {
               .contentType(MediaType.APPLICATION_JSON)
               .content(objectMapper.writeValueAsString(user)));
 
-      response.andExpect(status().isCreated());
+      response.andExpect(status().isCreated()).andDo(print());
    }
 
 
@@ -75,7 +76,7 @@ class UserControllerTest {
       // GIVEN
       List<User> userList = new ArrayList<>();
       userList.add(new User(
-              2L,
+              1L,
               "Hans",
               "ter Horst",
               "hans@mail.com",
@@ -87,7 +88,7 @@ class UserControllerTest {
               "Profiel informatie"
       ));
       userList.add(new User(
-              3L,
+              2L,
               "Klaas",
               "janssen",
               "klaas@mail.com",
@@ -107,18 +108,18 @@ class UserControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
    @Test
-   @DisplayName("negative result - get user by id")
+   @DisplayName("positive result - get user by id")
    public void getUserById() throws Exception {
 
       // GIVEN
       Long userId = 1L;
       User user = new User(
-              4L,
+              1L,
               "Hans",
               "ter Horst",
               "hans@mail.com",
@@ -133,11 +134,11 @@ class UserControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(get("/api/v1/users/user/{userId}", userId));
+      ResultActions response = mockMvc.perform(get("/api/v1/users/user/{id}", userId));
 
 
       // THEN
-      response.andExpect(status().isNotFound());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
@@ -168,20 +169,18 @@ class UserControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
    @Test
-   @DisplayName("negative result - update user")
+   @DisplayName("positive result - update user by id")
    void updateUserById() throws Exception {
 
-      userRepository.deleteAll();
-
       // GIVEN
-      Long userId = 6L;
+      Long userId = 1L;
       User user = new User(
-              6L,
+              1L,
               "Hans",
               "ter Horst",
               "hans@mail.com",
@@ -195,7 +194,7 @@ class UserControllerTest {
       userRepository.save(user);
 
       User updateUser = new User(
-              6L,
+              1L,
               "Klaas",
               "Janssen",
               "klaas@mail.com",
@@ -209,27 +208,25 @@ class UserControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(put("/api/v1/users/user/{userId}", userId)
+      ResultActions response = mockMvc.perform(put("/api/v1/users/user/{id}", userId)
               .contentType(MediaType.APPLICATION_JSON)
               .content(objectMapper.writeValueAsString(updateUser)));
 
 
       // THEN
-      response.andExpect(status().isNotFound());
+      response.andExpect(status().isOk()).andDo(print());
 
    }
 
 
    @Test
-   @DisplayName("positive result - delete user")
+   @DisplayName("positive result - delete user by id")
    void deleteUserById() throws Exception {
 
-      userRepository.deleteAll();
-
       // GIVEN
-      Long userId = 7L;
+      Long userId = 1L;
       User user = new User(
-              7L,
+              1L,
               "Hans",
               "ter Horst",
               "hans@mail.com",
@@ -244,10 +241,10 @@ class UserControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(delete("/api/v1/users/user/{userId}", userId));
+      ResultActions response = mockMvc.perform(delete("/api/v1/admin/user/{id}", userId));
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 }

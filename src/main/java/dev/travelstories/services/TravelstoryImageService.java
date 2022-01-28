@@ -34,27 +34,21 @@ public class TravelstoryImageService {
 
    public void uploadTravelstoryImages(Long userId, Long travelstoryId, MultipartFile file) {
 
-      // check if image not empty
       isFileEmptyOrThrow(file);
 
-      // if file is an image
       isImageOrThrow(file);
 
-      // check travelstory and user exists in database
       Travelstory travelstory = getTravelstoryOrThrow(travelstoryId);
       User user = getUserOrThrow(userId);
 
-      // get some metadata from file if any
       Map<String, String> metadata = getMetadata(file);
 
-      // create paths for file structuring
       String path = String.format("%s/%s/travelstories/%s", awsBucketName, user.getId(), travelstory.getId());
       String filename = String.format("%s", file.getOriginalFilename());
 
 
       try {
 
-         // Upload image aws s3 server
          awsImageStoreService.save(path, filename, Optional.of(metadata), file.getInputStream());
 
          // Update user profile image
@@ -68,19 +62,16 @@ public class TravelstoryImageService {
 
 
    public byte[] downloadTravelstoryImages(Long userId, Long travelstoryId) {
-      // user, travelstory exists
+
       User user = getUserOrThrow(userId);
       Travelstory travelstory = getTravelstoryOrThrow(travelstoryId);
 
-      // create download link
       String path = String.format("%s/%s/travelstories/%s", awsBucketName, user.getId(), travelstory.getId());
 
       return awsImageStoreService.download(path, travelstory.getImageUrl());
    }
 
-   /*
-    * PRIVATE METHODES
-    * */
+
 
    private Map<String, String> getMetadata(MultipartFile file) {
       Map<String, String> metadata = new HashMap<>();

@@ -22,7 +22,10 @@ import java.util.List;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.hamcrest.CoreMatchers.is;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc()
@@ -92,16 +95,13 @@ class TravelstoryControllerTest {
 
 
       // THEN
-      response.andExpect(status().isCreated());
+      response.andExpect(status().isCreated()).andDo(print());
    }
 
 
    @Test
    @DisplayName("positive result - get all travelstories")
    void getAllTravelstories() throws Exception {
-
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
 
       // GIVEN
       User user = new User(
@@ -152,7 +152,7 @@ class TravelstoryControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
 
    }
 
@@ -162,6 +162,7 @@ class TravelstoryControllerTest {
    void getAllTravelstoriesByUserId() throws Exception {
 
       // GIVEN
+      Long userId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -190,6 +191,7 @@ class TravelstoryControllerTest {
               "https://www.travelstories.travel/image/001",
               user
       ));
+
       travelstoryList.add(new Travelstory(
               2L,
               "Travelstory nummer 2",
@@ -206,24 +208,21 @@ class TravelstoryControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(get("/api/v1/users/travelstories/user/{userId}", user.getId()));
+      ResultActions response = mockMvc.perform(get("/api/v1/users/travelstories/user/{id}", userId));
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
    @Test
-   @DisplayName("positive result - get a travelstory by id")
+   @DisplayName("positive result - get a travelstory by travelstory id")
    void getTravelstoryById() throws Exception {
 
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
 
       // GIVEN
       Long travelstoryId = 1L;
-
       User user = new User(
               1L,
               "Hans",
@@ -272,15 +271,16 @@ class TravelstoryControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
    @Test
-   @DisplayName("positive result - update a travelstory by id")
+   @DisplayName("positive result - update a travelstory by travelstory id")
    void updateTravelstoryById() throws Exception {
 
       // GIVEN
+      Long travelstoryId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -325,13 +325,13 @@ class TravelstoryControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(put("/api/v1/users/travelstories/{travelstoryId}", travelstory.getId())
+      ResultActions response = mockMvc.perform(put("/api/v1/users/travelstories/{travelstoryId}", travelstoryId)
               .contentType(MediaType.APPLICATION_JSON)
               .content(objectMapper.writeValueAsString(updateTravelstory)));
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
@@ -339,10 +339,8 @@ class TravelstoryControllerTest {
    @DisplayName("positive result - delete a travelstory by id")
    void deleteTravelstoryById() throws Exception {
 
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
-
       // GIVEN
+      Long travelstoryId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -373,11 +371,11 @@ class TravelstoryControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(delete("/api/v1/users/travelstories/{travelstoryId}", travelstory.getId()));
+      ResultActions response = mockMvc.perform(delete("/api/v1/users/travelstories/{travelstoryId}", travelstoryId));
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 
 
@@ -385,10 +383,8 @@ class TravelstoryControllerTest {
    @DisplayName("positive result - get all public travelstories")
    void getAllPublicTravelstories() throws Exception {
 
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
-
       // GIVEN
+      Boolean isPublic = true;
       User user = new User(
               1L,
               "Hans",
@@ -413,19 +409,33 @@ class TravelstoryControllerTest {
               new Date(),
               "Bikepacking",
               "Nederland",
-              true,
+              isPublic,
               "https://www.travelstories.travel/image/001",
               user
       ));
+
       travelstoryList.add(new Travelstory(
               2L,
               "Travelstory nummer 2",
-              "Klaas Janssen",
+              "Hans ter Horst",
               "We kunnen weer fietsen. De corona regels zijn weer wat versoepeld zodat je weer een beetje normaal naar de camping kunt gaan.",
               new Date(),
               "Stedentrip",
               "Nederland",
-              true,
+              false,
+              "https://www.travelstories.travel/image/002",
+              user
+      ));
+
+      travelstoryList.add(new Travelstory(
+              3L,
+              "Travelstory nummer 2",
+              "Hans ter Horst",
+              "We kunnen weer fietsen. De corona regels zijn weer wat versoepeld zodat je weer een beetje normaal naar de camping kunt gaan.",
+              new Date(),
+              "Stedentrip",
+              "Nederland",
+              isPublic,
               "https://www.travelstories.travel/image/002",
               user
       ));
@@ -437,7 +447,9 @@ class TravelstoryControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk())
+              .andDo(print())
+              .andExpect(jsonPath("$.size()",is(2)));
    }
 
 
@@ -445,12 +457,9 @@ class TravelstoryControllerTest {
    @DisplayName("positive result - get a public travelstory by id")
    void getPublicTravelstoryById() throws Exception {
 
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
-
       // GIVEN
-      Long travelstoryId = 1L;
-
+      Long travelstoryId = 2L;
+      Boolean isPublic = true;
       User user = new User(
               1L,
               "Hans",
@@ -475,7 +484,7 @@ class TravelstoryControllerTest {
               new Date(),
               "Bikepacking",
               "Nederland",
-              true,
+              false,
               "https://www.travelstories.travel/image/001",
               user
       ));
@@ -488,7 +497,7 @@ class TravelstoryControllerTest {
               new Date(),
               "Stedentrip",
               "Nederland",
-              true,
+              isPublic,
               "https://www.travelstories.travel/image/002",
               user
       ));
@@ -500,6 +509,6 @@ class TravelstoryControllerTest {
 
 
       // THEN
-      response.andExpect(status().isOk());
+      response.andExpect(status().isOk()).andDo(print());
    }
 }

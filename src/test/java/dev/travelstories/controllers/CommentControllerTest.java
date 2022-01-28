@@ -57,6 +57,8 @@ class CommentControllerTest {
    void createComment() throws Exception {
 
       // GIVEN
+      Long travelstoryId = 1L;
+      Long userId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -93,20 +95,21 @@ class CommentControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(post("/api/v1/users/travelstories/{travelstoryId}/comments/user/{userId}",
-              travelstory.getId(), user.getId())
+              travelstoryId, userId)
               .contentType(MediaType.APPLICATION_JSON)
               .content(objectMapper.writeValueAsString(comment)));
 
       // THEN
-      response.andExpect(status().isCreated());
+      response.andExpect(status().isCreated()).andDo(print());
    }
 
 
    @Test
-   @DisplayName("positive result - get all comments from a travelstory")
+   @DisplayName("positive result - get all comments from a travelstory by id")
    void getCommentsFromTravelstoryById() throws Exception {
 
       // GIVEN
+      Long travelstoryId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -141,21 +144,24 @@ class CommentControllerTest {
       );
       commentRepository.save(comment);
 
+
       // WHEN
       ResultActions response = mockMvc.perform(get("/api/v1/users/travelstories/{travelstoryId}/comments",
-              travelstory.getId()));
+              travelstoryId));
 
 
       // THEN
       response.andExpect(status().isOk()).andDo(print());
-
    }
+
 
    @Test
    @DisplayName("positive result - get a comment from a travelstory")
    void getCommentFromTravelstoryById() throws Exception {
 
       // GIVEN
+      Long travelstoryId  = 1L;
+      Long commentId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -193,19 +199,21 @@ class CommentControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(get("/api/v1/users//travelstories/{travelstoryId}/comments/{commentId}",
-              travelstory.getId(), comment.getId()));
+              travelstoryId, commentId));
 
 
       // THEN
       response.andExpect(status().isOk()).andDo(print());
-
    }
+
 
    @Test
    @DisplayName("positive result - update a comment by id")
    void updateCommitById() throws Exception {
 
       // GIVEN
+      Long travelstoryId  = 1L;
+      Long commentId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -247,7 +255,7 @@ class CommentControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(put("/api/v1/users/travelstories/{travelstoryId}/comments/{commentId}",
-              travelstory.getId(), comment.getId())
+              travelstoryId, commentId)
               .contentType(MediaType.APPLICATION_JSON)
               .content(objectMapper.writeValueAsString(updateComment)));
 
@@ -257,14 +265,13 @@ class CommentControllerTest {
 
    }
 
+
    @Test
    void deleteCommitById() throws Exception {
 
-      commentRepository.deleteAll();
-      travelstoryRepository.deleteAll();
-      userRepository.deleteAll();
-
       // GIVEN
+      Long travelstoryId  = 1L;
+      Long commentId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -302,7 +309,7 @@ class CommentControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(delete("/api/v1/users/travelstories/{travelstoryId}/comments/{commentId}",
-              travelstory.getId(), comment.getId()));
+              travelstoryId, commentId));
 
 
       // THEN

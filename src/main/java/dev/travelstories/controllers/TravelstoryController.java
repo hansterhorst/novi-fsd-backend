@@ -2,6 +2,7 @@ package dev.travelstories.controllers;
 
 import dev.travelstories.dtos.TravelstoryDTO;
 import dev.travelstories.entities.Travelstory;
+import dev.travelstories.exceptions.BadRequestException;
 import dev.travelstories.services.TravelstoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,7 @@ public class TravelstoryController {
    public ResponseEntity<List<TravelstoryDTO>> getAllTravelstories() {
 
       List<Travelstory> travelstoryList = travelstoryService.getAllTravelstories();
+
       List<TravelstoryDTO> travelstoryDTOList = travelstoryList.stream().map(TravelstoryDTO::entityToDTO).toList();
 
       return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
@@ -55,6 +57,7 @@ public class TravelstoryController {
    public ResponseEntity<List<TravelstoryDTO>> getAllTravelstoriesByUserId(@PathVariable(value = "userId") Long userId) {
 
       List<Travelstory> travelstoryList = travelstoryService.getAllTravelstoriesByUserId(userId);
+
       List<TravelstoryDTO> travelstoryDTOList = travelstoryList.stream().map(TravelstoryDTO::entityToDTO).toList();
 
       return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
@@ -93,7 +96,9 @@ public class TravelstoryController {
    //   GET all public travelstories
    @GetMapping(path = PUBLIC_ACCESS_URL + "/travelstories")
    public ResponseEntity<List<TravelstoryDTO>> getAllPublicTravelstories() {
+
       List<Travelstory> travelstoryList = travelstoryService.getAllPublicTravelstories();
+
       List<TravelstoryDTO> travelstoryDTOList = travelstoryList.stream().map(TravelstoryDTO::entityToDTO).toList();
 
       return new ResponseEntity<>(travelstoryDTOList, HttpStatus.OK);
@@ -110,6 +115,8 @@ public class TravelstoryController {
       for (Travelstory story : travelstoryList) {
          if (story.getId().equals(travelstoryId)) {
             travelstory = story;
+         } else {
+            throw new BadRequestException(String.format("Travelstory with id: %s is not public", travelstoryId));
          }
       }
 

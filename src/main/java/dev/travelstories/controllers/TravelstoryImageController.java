@@ -20,7 +20,6 @@ public class TravelstoryImageController {
    }
 
 
-   //   upload a travelstory image
    @PostMapping(path = AUTHORITY_USER_ACCESS_URL + "/user/{userId}/travelstory/{travelstoryId}/images/upload",
            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
            produces = MediaType.APPLICATION_JSON_VALUE
@@ -34,7 +33,6 @@ public class TravelstoryImageController {
    }
 
 
-   //   download a travelstory image
    @GetMapping(path = PUBLIC_ACCESS_URL + "/user/{userId}/travelstory/{travelstoryId}/images/download")
    @CrossOrigin(value = "http://localhost:3000")
    public byte[] downloadUserProfileImages(@PathVariable(value = "userId") Long userId,

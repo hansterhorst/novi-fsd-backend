@@ -1,6 +1,5 @@
 package dev.travelstories.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 import dev.travelstories.repositories.LikeRepository;
@@ -16,7 +15,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -53,6 +54,8 @@ class LikeControllerTest {
    void createLike() throws Exception {
 
       // GIVEN
+      Long likeUserId = 2L;
+      Long travelstoryId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -68,7 +71,23 @@ class LikeControllerTest {
       );
       userRepository.save(user);
 
-      Travelstory travelstory = new Travelstory(
+      User user2 = new User(
+              2L,
+              "Klaas",
+              "Klaas Janssen",
+              "klaas@mail.com",
+              "klaas@mail.com",
+              "password",
+              "https://www.profileImage.com/12",
+              "Deventer",
+              "Nederland",
+              "Profiel informatie"
+
+      );
+      userRepository.save(user2);
+
+      List<Travelstory> travelstoryList = new ArrayList<>();
+      travelstoryList.add(new Travelstory(
               1L,
               "Travelstory nummer 1",
               "Hans ter Horst",
@@ -79,23 +98,39 @@ class LikeControllerTest {
               true,
               "https://www.travelstories.travel/image/001",
               user
-      );
-      travelstoryRepository.save(travelstory);
+      ));
+
+      travelstoryList.add(new Travelstory(
+              2L,
+              "Travelstory nummer 2",
+              "Anne Rozendal",
+              "We kunnen weer fietsen. De corona regels zijn weer wat versoepeld zodat je weer een beetje normaal naar de camping kunt gaan.",
+              new Date(),
+              "Bikepacking",
+              "Nederland",
+              true,
+              "https://www.travelstories.travel/image/001",
+              user
+      ));
+
+      travelstoryRepository.saveAll(travelstoryList);
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(post("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstory.getId(), user.getId()));
+      ResultActions response = mockMvc.perform(post("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstoryId, likeUserId));
 
 
       // THEN
       response.andExpect(status().isCreated()).andDo(print());
    }
 
+
    @Test
-   @DisplayName("positive result - get all likes from travelstory")
+   @DisplayName("positive result - get all likes from travelstory by travelstory id")
    void getAllTravelstoryLikes() throws Exception {
 
       // GIVEN
+      Long travelstoryId = 1L;
       User authUser = new User(
               1L,
               "Hans",
@@ -110,7 +145,7 @@ class LikeControllerTest {
       );
       userRepository.save(authUser);
 
-      User user = new User(
+      User likeUser = new User(
               2L,
               "Anne",
               "Rozendal",
@@ -122,7 +157,7 @@ class LikeControllerTest {
               "Nederland",
               "Profiel informatie"
       );
-      userRepository.save(user);
+      userRepository.save(likeUser);
 
       Travelstory travelstory = new Travelstory(
               1L,
@@ -138,22 +173,25 @@ class LikeControllerTest {
       );
       travelstoryRepository.save(travelstory);
 
-      mockMvc.perform(post("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstory.getId(), user.getId()));
+      mockMvc.perform(post("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstory.getId(), likeUser.getId()));
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(get("/api/v1/users/travelstories/{travelstoryId}/likes", travelstory.getId()));
+      ResultActions response = mockMvc.perform(get("/api/v1/users/travelstories/{travelstoryId}/likes", travelstoryId));
 
 
       // THEN
       response.andExpect(status().isOk()).andDo(print());
    }
 
+
    @Test
    @DisplayName("positive result - delete travelstory like by user id")
    void deleteLikeByUserId() throws Exception {
 
       // GIVEN
+      Long travelstoryId = 1L;
+      Long userId = 2L;
       User authUser = new User(
               1L,
               "Hans",
@@ -200,7 +238,7 @@ class LikeControllerTest {
 
 
       // WHEN
-      ResultActions response = mockMvc.perform(delete("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstory.getId(), user.getId()));
+      ResultActions response = mockMvc.perform(delete("/api/v1/users/travelstories/{travelstoryId}/likes/user/{userId}", travelstoryId, userId));
 
 
       // THEN

@@ -31,8 +31,7 @@ public class LikeService {
 
    public void createLike(Long travelstoryId, Long userId) {
 
-      Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-              new RecordNotFoundException(String.format("Travelstory with id %s not found", travelstoryId)));
+      Travelstory travelstory = getTravelstoryByIdOrElseThrow(travelstoryId);
 
       User user = userRepository.findById(userId).orElseThrow(() ->
               new RecordNotFoundException(String.format("User with id %s not found", userId)));
@@ -47,8 +46,7 @@ public class LikeService {
 
    public List<Like> getAllTravelstoryLikes(Long travelstoryId) {
 
-      Travelstory travelstory = travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
-              new RecordNotFoundException(String.format("Travelstory with id %s not found", travelstoryId)));
+      Travelstory travelstory = getTravelstoryByIdOrElseThrow(travelstoryId);
 
       return likeRepository.findLikesByTravelstoryId(travelstory.getId()).orElseThrow(() ->
               new RecordNotFoundException(String.format("Travelstory with id %s not found", travelstoryId)));
@@ -57,7 +55,9 @@ public class LikeService {
 
    public void deleteTravelstoryLikeByUserId(Long travelstoryId, Long userId) {
 
-      List<Like> likes = likeRepository.findLikesByTravelstoryId(travelstoryId).orElseThrow(() ->
+      Travelstory travelstory = getTravelstoryByIdOrElseThrow(travelstoryId);
+
+      List<Like> likes = likeRepository.findLikesByTravelstoryId(travelstory.getId()).orElseThrow(() ->
               new RecordNotFoundException(String.format("Travelstory with id %s not found", travelstoryId)));
 
       User user = userRepository.findById(userId).orElseThrow(() ->
@@ -66,9 +66,16 @@ public class LikeService {
       for (Like like : likes) {
          if (like.getUserId().equals(user.getId())) {
             likeRepository.delete(like);
-            break;
+         } else {
+            throw new BadRequestException("Nothing to delete");
          }
-         throw new BadRequestException("Nothing to delete");
       }
+   }
+
+
+
+   private Travelstory getTravelstoryByIdOrElseThrow(Long travelstoryId) {
+      return travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
+              new RecordNotFoundException(String.format("Travelstory with id %s not found", travelstoryId)));
    }
 }

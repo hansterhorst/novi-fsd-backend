@@ -40,6 +40,8 @@ class FollowControllerTest {
    void createFollowUserByUserId() throws Exception {
 
       // GIVEN
+      Long userId = 1L;
+      Long authUserId = 2L;
       User user = new User(
               1L,
               "Hans",
@@ -73,7 +75,7 @@ class FollowControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(post("/api/v1/users/{userId}/follow/{authUserId}",
-              user.getId(), authUser.getId()));
+              userId, authUserId));
 
 
       // THEN
@@ -87,6 +89,7 @@ class FollowControllerTest {
    void getAllFollowUsers() throws Exception {
 
       // GIVEN
+      Long userId = 1L;
       User user = new User(
               1L,
               "Hans",
@@ -123,7 +126,7 @@ class FollowControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(get("/api/v1/users/{userId}/follow",
-              user.getId()));
+              userId));
 
 
       // THEN
@@ -137,6 +140,8 @@ class FollowControllerTest {
    void deleteFollowUserById() throws Exception {
 
       // GIVEN
+      Long userId = 1L;
+      Long authUserId = 2L;
       User user = new User(
               1L,
               "Hans",
@@ -173,7 +178,7 @@ class FollowControllerTest {
 
       // WHEN
       ResultActions response = mockMvc.perform(delete("/api/v1/users/{userId}/follow/{authUserId}",
-              user.getId(), authUser.getId()));
+              userId, authUserId));
 
 
       // THEN

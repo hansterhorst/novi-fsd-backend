@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class UserService {
 
-
    private final UserRepository userRepository;
 
    @Autowired
@@ -43,8 +42,7 @@ public class UserService {
 
    //   GET user by userId
    public User getUserById(Long userId) {
-      return userRepository.findById(userId).orElseThrow(() ->
-              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+      return getUserByIdOrElseThrow(userId);
    }
 
 
@@ -58,8 +56,7 @@ public class UserService {
    //   UPDATE a user by userId
    public void updateUserById(Long userId, User user) {
 
-      User updateUser = userRepository.findById(userId).orElseThrow(() ->
-              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+      User updateUser = getUserByIdOrElseThrow(userId);
 
       updateUser.setFirstname(user.getFirstname());
       updateUser.setLastname(user.getLastname());
@@ -76,12 +73,16 @@ public class UserService {
    //   DELETE user by userId
    public void deleteUserById(Long userId) {
 
-      User deleteUser = userRepository.findById(userId).orElseThrow(() ->
-              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+      User deleteUser = getUserByIdOrElseThrow(userId);
 
       deleteUser.getRoles().removeAll(deleteUser.getRoles());
 
       userRepository.delete(deleteUser);
    }
 
+
+   private User getUserByIdOrElseThrow(Long userId) {
+      return userRepository.findById(userId).orElseThrow(() ->
+              new RecordNotFoundException(String.format("User with id: %s not found.", userId)));
+   }
 }
