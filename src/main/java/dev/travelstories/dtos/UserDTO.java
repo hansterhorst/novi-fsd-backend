@@ -4,6 +4,7 @@ import dev.travelstories.entities.Follow;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -17,10 +18,13 @@ public class UserDTO {
    private String username;
    private String password;
    private String profileImage;
+   @NotNull(message = "Woonplaats is verplicht")
    @Size(min = 2, max = 50, message = "Woonplaats tussen de 2 en 250 characters")
    private String city;
+   @NotNull(message = "Land is verplicht")
    @Size(min = 2, max = 50, message = "Land tussen de 2 en 250 characters")
    private String country;
+   @NotNull(message = "Bio is verplicht")
    @Size(min = 2, max = 300, message = "Bio tussen de 2 en 250 characters")
    private String bio;
    private List<Travelstory> travelstories;

@@ -28,7 +28,6 @@ public class UserService {
       }
 
       user.setUsername(user.getEmail());
-      user.setProfileImage("https://robohash.org/" + user.getFirstname());
 
       userRepository.save(user);
    }
