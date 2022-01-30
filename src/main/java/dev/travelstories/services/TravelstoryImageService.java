@@ -3,6 +3,7 @@ package dev.travelstories.services;
 import dev.travelstories.entities.Travelstory;
 import dev.travelstories.entities.User;
 import dev.travelstories.exceptions.BadRequestException;
+import dev.travelstories.exceptions.RecordNotFoundException;
 import dev.travelstories.repositories.TravelstoryRepository;
 import dev.travelstories.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -72,7 +73,6 @@ public class TravelstoryImageService {
    }
 
 
-
    private Map<String, String> getMetadata(MultipartFile file) {
       Map<String, String> metadata = new HashMap<>();
       metadata.put("Content-Type", file.getContentType());
@@ -81,34 +81,26 @@ public class TravelstoryImageService {
    }
 
    private User getUserOrThrow(Long userId) {
-      return userRepository
-              .findById(userId)
-              .stream()
-              .filter(user -> user.getId().equals(userId))
-              .findFirst()
-              .orElseThrow(() -> new BadRequestException(String.format("User with id %s not found!", userId)));
+      return userRepository.findById(userId).orElseThrow(() ->
+              new RecordNotFoundException(String.format("User with id %s not found!", userId)));
    }
 
 
    private Travelstory getTravelstoryOrThrow(Long travelstoryId) {
-      return travelstoryRepository
-              .findById(travelstoryId)
-              .stream()
-              .filter(story -> story.getId().equals(travelstoryId))
-              .findFirst()
-              .orElseThrow(() -> new BadRequestException(String.format("Travelstory with id %s not found!", travelstoryId)));
+      return travelstoryRepository.findById(travelstoryId).orElseThrow(() ->
+              new RecordNotFoundException(String.format("Travelstory with id %s not found!", travelstoryId)));
    }
 
    private void isImageOrThrow(MultipartFile file) {
       if (!Arrays.asList(IMAGE_JPEG.getMimeType(), IMAGE_PNG.getMimeType())
               .contains(file.getContentType())) {
-         throw new BadRequestException("File must be a image!");
+         throw new BadRequestException("Foto moet een .jpg of .png file zijn.");
       }
    }
 
    private void isFileEmptyOrThrow(MultipartFile file) {
       if (file.isEmpty()) {
-         throw new BadRequestException(String.format("Cannot upload a empty file [ %s ]", file.getSize()));
+         throw new BadRequestException(String.format("File bevat geen foto [ %s ].", file.getSize()));
       }
    }
 }
