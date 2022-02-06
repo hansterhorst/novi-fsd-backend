@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -37,6 +38,7 @@ class FollowControllerTest {
 
    @Test
    @DisplayName("positive result - create a follow user by id")
+   @DirtiesContext
    void createFollowUserByUserId() throws Exception {
 
       // GIVEN
@@ -86,6 +88,7 @@ class FollowControllerTest {
 
    @Test
    @DisplayName("positive result - get all follow users ")
+   @DirtiesContext
    void getAllFollowUsers() throws Exception {
 
       // GIVEN
@@ -137,6 +140,7 @@ class FollowControllerTest {
 
    @Test
    @DisplayName("positive result - delete a follow user ")
+   @DirtiesContext
    void deleteFollowUserById() throws Exception {
 
       // GIVEN

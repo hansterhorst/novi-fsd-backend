@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -54,6 +55,7 @@ class CommentControllerTest {
 
    @Test
    @DisplayName("positive result - create a user comment on a travelstory")
+   @DirtiesContext
    void createComment() throws Exception {
 
       // GIVEN
@@ -106,6 +108,7 @@ class CommentControllerTest {
 
    @Test
    @DisplayName("positive result - get all comments from a travelstory by id")
+   @DirtiesContext
    void getCommentsFromTravelstoryById() throws Exception {
 
       // GIVEN
@@ -157,6 +160,7 @@ class CommentControllerTest {
 
    @Test
    @DisplayName("positive result - get a comment from a travelstory")
+   @DirtiesContext
    void getCommentFromTravelstoryById() throws Exception {
 
       // GIVEN
@@ -209,6 +213,7 @@ class CommentControllerTest {
 
    @Test
    @DisplayName("positive result - update a comment by id")
+   @DirtiesContext
    void updateCommitById() throws Exception {
 
       // GIVEN
@@ -267,6 +272,8 @@ class CommentControllerTest {
 
 
    @Test
+   @DisplayName("positive result - delete a comment by id")
+   @DirtiesContext
    void deleteCommitById() throws Exception {
 
       // GIVEN

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -53,6 +54,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - create a new travelstory")
+   @DirtiesContext
    void createTravelstory() throws Exception {
 
       travelstoryRepository.deleteAll();
@@ -101,6 +103,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - get all travelstories")
+   @DirtiesContext
    void getAllTravelstories() throws Exception {
 
       // GIVEN
@@ -159,6 +162,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - get all travelstory by user id")
+   @DirtiesContext
    void getAllTravelstoriesByUserId() throws Exception {
 
       // GIVEN
@@ -218,6 +222,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - get a travelstory by travelstory id")
+   @DirtiesContext
    void getTravelstoryById() throws Exception {
 
 
@@ -277,6 +282,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - update a travelstory by travelstory id")
+   @DirtiesContext
    void updateTravelstoryById() throws Exception {
 
       // GIVEN
@@ -337,6 +343,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - delete a travelstory by id")
+   @DirtiesContext
    void deleteTravelstoryById() throws Exception {
 
       // GIVEN
@@ -381,6 +388,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - get all public travelstories")
+   @DirtiesContext
    void getAllPublicTravelstories() throws Exception {
 
       // GIVEN
@@ -455,6 +463,7 @@ class TravelstoryControllerTest {
 
    @Test
    @DisplayName("positive result - get a public travelstory by id")
+   @DirtiesContext
    void getPublicTravelstoryById() throws Exception {
 
       // GIVEN

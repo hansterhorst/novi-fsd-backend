@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -44,6 +45,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - create a new user")
+   @DirtiesContext
    void createNewUser() throws Exception {
 
       User user = new User(
@@ -71,6 +73,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - get all user")
+   @DirtiesContext
    public void getAllUsers() throws Exception {
 
       // GIVEN
@@ -114,6 +117,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - get user by id")
+   @DirtiesContext
    public void getUserById() throws Exception {
 
       // GIVEN
@@ -144,6 +148,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - get user by email")
+   @DirtiesContext
    void getUserByEmail() throws Exception {
 
       // GIVEN
@@ -175,6 +180,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - update user by id")
+   @DirtiesContext
    void updateUserById() throws Exception {
 
       // GIVEN
@@ -221,6 +227,7 @@ class UserControllerTest {
 
    @Test
    @DisplayName("positive result - delete user by id")
+   @DirtiesContext
    void deleteUserById() throws Exception {
 
       // GIVEN
