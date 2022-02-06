@@ -16,7 +16,7 @@ public class RegisterDTO {
    private String lastname;
 
    @NotBlank(message = "Email is verplicht")
-   @Email()
+   @Email(message = "Email is niet geldig")
    private String email;
 
    @NotBlank(message = "Wachtwoord is verplicht")

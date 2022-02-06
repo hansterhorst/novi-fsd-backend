@@ -50,7 +50,7 @@ public class AuthController {
 
    @PostMapping(path = "/login")
    @CrossOrigin(value = "http://localhost:3000")
-   public ResponseEntity<JwtTokenDTO> authenticateUser(@Valid @RequestBody LoginDTO loginDTO) {
+   public ResponseEntity<JwtTokenDTO> loginUser(@Valid @RequestBody LoginDTO loginDTO) {
 
       try {
          authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -84,7 +84,6 @@ public class AuthController {
       user.setLastname(registerDTO.getLastname());
       user.setUsername(registerDTO.getEmail());
       user.setEmail(registerDTO.getEmail());
-      user.setProfileImage("https://robohash.org/" + registerDTO.getFirstname());
       user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
 
       Role role = roleRepository.findByName("ROLE_USER").get();
