@@ -71,7 +71,7 @@ public class TravelstoryService {
 
    //   GET all public travelstories
    public List<Travelstory> getAllPublicTravelstories() {
-      return travelstoryRepository.findAllPublicTravelstories();
+      return travelstoryRepository.findAllPublicTravelstories().orElseThrow(() -> new RecordNotFoundException("No public travelstories found."));
    }
 
 
